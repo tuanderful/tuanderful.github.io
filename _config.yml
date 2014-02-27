@@ -1,6 +1,7 @@
 # This is the default format. 
 # For more see: http://jekyllrb.com/docs/permalinks/
-permalink: /:categories/:year/:month/:day/:title 
+#permalink: /:categories/:year/:month/:day/:title 
+permalink: /:year/:month/:title 
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 markdown: redcarpet
@@ -9,13 +10,13 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Jekyll Bootstrap
+title : JS Cheat Sheet
 tagline: Site Tagline
 author :
-  name : Name Lastname
-  email : blah@email.test
-  github : username
-  twitter : username
+  name : Tuan Huynh
+  email : holler@tuanhuynh.com
+  github : tuanderful
+  twitter : tuanderful
   feedburner : feedname
 
 # The production_url is only used when full-domain names are needed

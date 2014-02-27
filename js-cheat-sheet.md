@@ -2,7 +2,7 @@
 layout: default
 title: JS Cheat Sheet
 group: navigation
-permalink: /
+permalink: js-cheat-sheet/
 ---
 
 <div id="home">

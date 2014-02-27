@@ -8,11 +8,24 @@ permalink: idiomatic/
 <div id="home">
   <h1>JS Cheat Sheet</h1>
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
+{% highlight js %}
+if (condition) {
+  // statements
+}
+
+while (something === somethingElse) {
+  // statements
+}
+
+for (var i = 0; i < 100; i++) {
+  // statements
+}
+
+if (true) {
+  // statements
+} else {
+  // statements
+}
+
 {% endhighlight %}
 </div>

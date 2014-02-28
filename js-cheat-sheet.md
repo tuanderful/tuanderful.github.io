@@ -5,14 +5,24 @@ group: navigation
 permalink: js-cheat-sheet/
 ---
 
-<div id="home">
-  <h1>JS Cheat Sheet</h1>
+<div class="span9" role="main">
+  <div id="home">
+    <h1 class="page-header">JS Cheat Sheet</h1>
+    <p class="lead">
+      Prepare for your interview, or just brush up on your JavaScript basics.
+    </p>
 
-{% highlight javascript %}
-alert('foo');
-{% endhighlight %}
+    <h3>
 
-{% highlight html %}
-<html>
-{% endhighlight %}
+
+
+  {% highlight javascript %}
+  alert('foo');
+  {% endhighlight %}
+
+  </div>
+</div>
+
+<div class="span3">
+  sidebar nav
 </div>

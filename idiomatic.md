@@ -1,11 +1,11 @@
 ---
-layout: default
+layout: default-narrow
 title: Idiomatic
 group: navigation
 permalink: idiomatic/
 ---
 
-<div id="home">
+<div id="home" role="main">
   <h1>JS Cheat Sheet</h1>
 
 {% highlight js %}

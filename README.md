@@ -1,40 +1,39 @@
-# Jekyll-Bootstrap
+# JavaScript Cheat Sheet
 
-The quickest way to start and publish your Jekyll powered blog. 100% compatible with GitHub pages
+My GitHub pages: A compilation of JavaScript cheat sheets and web development programming notes.
 
-## Usage
 
-For all usage and documentation please see: <http://jekyllbootstrap.com>
+## Pages
 
-## Version
+The site primarily consists of the following pages:
 
-0.3.0 - stable and versioned using [semantic versioning](http://semver.org/).
+* [JS Cheat Sheet](http://tuanderful.github.io/js-cheat-sheet/)
+* [Idiomatic JS](http://tuanderful.github.io/idiomatic/) - How you should write your JS
+* [Aria](http://tuanderful.github.io/aria/) - Notes on useful Aria roles and properties
 
-**NOTE:** 0.3.0 introduces a new theme which is not backwards compatible in the sense it won't _look_ like the old version.
-However, the actual API has not changed at all.
-You might want to run 0.3.0 in a branch to make sure you are ok with the theme design changes.
+
+## Build Info
+
+These were built with [Jekyll](http://jekyllrb.com/) and [Jekyll-Bootstrap](http://jekyllbootstrap.com/).
+
+To build locally:
+
+* Install Ruby
+  * [How to install Ruby on a Mac](http://code.tutsplus.com/tutorials/how-to-install-ruby-on-a-mac--net-21664)
+* Install Jekyll
+  * [Using Jekyll with Pages](https://help.github.com/articles/using-jekyll-with-pages)
+* Install Bundler
+  * `gem install bundler`
+* Run Jekyll Server, with `--watch`
+  * `bundle exec jekyll serve -w`
+* Go to [http://localhost:4000](http://localhost:4000)
+
 
 ## Contributing
 
+If you'd like to contribute, the contents are in the following files:
 
-To contribute to the framework please make sure to checkout your branch based on `jb-development`!!
-This is very important as it allows me to accept your pull request without having to publish a public version release.
+* [js-cheat-sheet.md](https://github.com/tuanderful/tuanderful.github.io/blob/master/js-cheat-sheet.md)
+* [idiomatic.md](https://github.com/tuanderful/tuanderful.github.io/blob/master/idiomatic.md)
+* [aria.md](https://github.com/tuanderful/tuanderful.github.io/blob/master/aria.md)
 
-Small, atomic Features, bugs, etc.
-Use the `jb-development` branch but note it will likely change fast as pull requests are accepted.
-Please rebase as often as possible when working.
-Work on small, atomic features/bugs to avoid upstream commits affecting/breaking your development work.
-
-For Big Features or major API extensions/edits:
-This is the one case where I'll accept pull-requests based off the master branch.
-This allows you to work in isolation but it means I'll have to manually merge your work into the next public release.
-Translation : it might take a bit longer so please be patient! (but sincerely thank you).
-
-**Jekyll-Bootstrap Documentation Website.**
-
-The documentation website at <http://jekyllbootstrap.com> is maintained at https://github.com/plusjade/jekyllbootstrap.com
-
-
-## License
-
-[MIT](http://opensource.org/licenses/MIT)

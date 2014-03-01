@@ -6,7 +6,7 @@ permalink: idiomatic/
 ---
 
 <div id="home" role="main">
-  <h1>JS Cheat Sheet</h1>
+  <h1>Idiomatic</h1>
 
 {% highlight js %}
 if (condition) {

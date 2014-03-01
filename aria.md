@@ -1,54 +1,54 @@
 ---
-layout: default
+layout: default-narrow
 title: Aria
 group: navigation
 permalink: aria/
 ---
 
-<div id="home">
+<div id="home" role="main">
   <h1>Helpful Aria Attributes</h1>
 
-`aria-hidden="true"`
+<code>aria-hidden="true"</code>
 
-`aria-controls`
+<code>aria-controls</code>
 
-`aria-describedby`
+<code>aria-describedby</code>
 
-`aria-disabled`
+<code>aria-disabled</code>
 
-`aria-haspopup`
+<code>aria-haspopup</code>
 
-`aria-hidden`
+<code>aria-hidden</code>
 
-`aria-label`
+<code>aria-label</code>
 
-`aria-labelledby`
+<code>aria-labelledby</code>
 
-`aria-live`
+<code>aria-live</code>
 
-`aria-readonly`
+<code>aria-readonly</code>
 
-`aria-role`
+<code>aria-role</code>
 
-`aria-valuemax`
+<code>aria-valuemax</code>
 
-`aria-valuemin`
+<code>aria-valuemin</code>
 
-`aria-valuenow`
+<code>aria-valuenow</code>
 
-`aria-valuetext`
+<code>aria-valuetext</code>
 
 
 <h1>Roles</h1>
-`role="presentation"`
-`role="application"`
-`role="application"`
-`role="banner"`
-`role="complementary"`
-`role="contentinfo"`
-`role="form"`
-`role="main"`
-`role="navigation"`
-`role="search"`
+<code>role="presentation"</code>
+<code>role="application"</code>
+<code>role="application"</code>
+<code>role="banner"</code>
+<code>role="complementary"</code>
+<code>role="contentinfo"</code>
+<code>role="form"</code>
+<code>role="main"</code>
+<code>role="navigation"</code>
+<code>role="search"</code>
 
 </div>

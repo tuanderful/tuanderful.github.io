@@ -1,54 +1,98 @@
 ---
-layout: default-narrow
+layout: default
 title: Aria
 group: navigation
 permalink: aria/
 ---
 
-<div id="home" role="main">
-  <h1>Helpful Aria Attributes</h1>
+<div class="col-md-8 col-md-offset-2" id="home" role="main">
+<h1 class="page-header">{{ page.title }}</h1>
 
-<code>aria-hidden="true"</code>
+<h2>Aria Attributes</h2>
 
-<code>aria-controls</code>
+<table class="table table-condensed table-hover">
+  <thead>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>aria-hidden="true"</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aria-controls</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aria-describedby</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aria-disabled</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aria-haspopup</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aria-hidden</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aria-label</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aria-labelledby</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aria-live</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aria-readonly</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aria-role</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aria-valuemax</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aria-valuemin</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aria-valuenow</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aria-valuetext</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
-<code>aria-describedby</code>
-
-<code>aria-disabled</code>
-
-<code>aria-haspopup</code>
-
-<code>aria-hidden</code>
-
-<code>aria-label</code>
-
-<code>aria-labelledby</code>
-
-<code>aria-live</code>
-
-<code>aria-readonly</code>
-
-<code>aria-role</code>
-
-<code>aria-valuemax</code>
-
-<code>aria-valuemin</code>
-
-<code>aria-valuenow</code>
-
-<code>aria-valuetext</code>
 
 
-<h1>Roles</h1>
-<code>role="presentation"</code>
-<code>role="application"</code>
-<code>role="application"</code>
-<code>role="banner"</code>
-<code>role="complementary"</code>
-<code>role="contentinfo"</code>
-<code>role="form"</code>
-<code>role="main"</code>
-<code>role="navigation"</code>
-<code>role="search"</code>
+<h2>Roles</h2>
+<table class="table table-condensed table-hover">
+  <tbody>
+    <tr><td><code>role="presentation"</code></td><td></td></tr>
+    <tr><td><code>role="application"</code></td><td></td></tr>
+    <tr><td><code>role="application"</code></td><td></td></tr>
+    <tr><td><code>role="banner"</code></td><td></td></tr>
+    <tr><td><code>role="complementary"</code></td><td></td></tr>
+    <tr><td><code>role="contentinfo"</code></td><td></td></tr>
+    <tr><td><code>role="form"</code></td><td></td></tr>
+    <tr><td><code>role="main"</code></td><td></td></tr>
+    <tr><td><code>role="navigation"</code></td><td></td></tr>
+    <tr><td><code>role="search"</code></td><td></td></tr>
+  </tbody>
+</table>
 
-</div>
+</div> <!-- .col-md-8.col-md-offset-2 -->

@@ -5,8 +5,8 @@ group: navigation
 permalink: idiomatic/
 ---
 
-<div id="home" role="main">
-  <h1>Idiomatic</h1>
+<div class="col-md-8 col-md-offset-2" id="home" role="main">
+<h1>{{ page.title }}</h1>
 
 {% highlight js %}
 if (condition) {

@@ -6,9 +6,9 @@ markdown: redcarpet
 permalink: /
 ---
 
-<div class="span9" role="main">
+<div class="col-md-10" role="main">
   <div id="home">
-    <h1 class="page-header">JS Cheat Sheet</h1>
+    <h1 class="page-header">{{ page.title }}</h1>
     <p class="lead">
       Prepare for your interview, or just brush up on your JavaScript basics.
     </p>
@@ -17,7 +17,7 @@ permalink: /
 
     <h4>Slice</h4>
     <div class="row">
-      <div class="span5">
+      <div class="col-md-8">
 {% highlight javascript %}
 fruits = ['apples', 'oranges', 'banana', 'pear', 'grape'];
 basket = fruits.slice(2, 3);
@@ -25,7 +25,7 @@ basket = fruits.slice(2, 3);
 //basket = [ 'banana' ]
 {% endhighlight %}
       </div>
-      <div class="span4">
+      <div class="col-md-4">
         <ul>
           <li>Creates a shallow <strong>copy</strong></li>
           <li>Leaves <strong>original array unchanged</strong></li>
@@ -36,7 +36,7 @@ basket = fruits.slice(2, 3);
 
     <h4>Splice</h4>
     <div class="row">
-      <div class="span5">
+      <div class="col-md-8">
 {% highlight javascript %}
 fruits = ['apples', 'oranges', 'banana', 'pear', 'grape'];
 basket = fruits.splice(2, 3);
@@ -44,7 +44,7 @@ basket = fruits.splice(2, 3);
 //basket = [ 'banana', 'pear', 'grape' ]
 {% endhighlight %}
       </div>
-      <div class="span4">
+      <div class="col-md-4">
         <ul>
           <li>Removes <code>count</code> number of elements from the array</li>
           <li>Inserts new elements into the original array</li>
@@ -54,10 +54,16 @@ basket = fruits.splice(2, 3);
     </div>
 
 
+    <h4>substr</h4>
+
+
+    <h4>substring</h4>
+
+
     <h3>Document Object Model</h3>
     <h4>Document Type</h4>
     <div class="row">
-      <div class="span5">
+      <div class="col-md-6">
         <h5>Properties</h5>
         <table>
           <tr><td><code>document.anchors</code></td><td></td></tr>
@@ -68,7 +74,7 @@ basket = fruits.splice(2, 3);
           <tr><td><code>document.readyState</code></td><td><code>loading</code><code>complete</code></td></tr>
         </table>
       </div>
-      <div class="span4">
+      <div class="col-md-6">
         <h5>Methods</h5>
         <table>
           <tr><td><code>document.getElementById()</code></td><td></td></tr>
@@ -83,7 +89,7 @@ basket = fruits.splice(2, 3);
 
     <h4>Element Type</h4>
     <div class="row">
-      <div class="span5">
+      <div class="col-md-6">
         <h5>Properties</h5>
         <table>
           <tr><td><code>element.childElementCount</code></td><td></td></tr>
@@ -100,7 +106,7 @@ basket = fruits.splice(2, 3);
           </td></tr>
         </table>
       </div>
-      <div class="span4">
+      <div class="col-md-6">
         <h5>Methods</h5>
         <table>
           <tr><td><code>element.getElementById()</code></td><td></td></tr>
@@ -117,6 +123,6 @@ basket = fruits.splice(2, 3);
   </div>
 </div>
 
-<div class="span3">
+<div class="col-md-2">
   sidebar nav
 </div>

@@ -5,8 +5,7 @@ group: navigation
 permalink: idiomatic/
 ---
 
-<div class="col-md-8 col-md-offset-2" id="home" role="main">
-<h1>{{ page.title }}</h1>
+# {{ page.title }}
 
 {% highlight js %}
 if (condition) {
@@ -28,4 +27,3 @@ if (true) {
 }
 
 {% endhighlight %}
-</div>

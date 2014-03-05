@@ -1,11 +1,10 @@
 ---
-layout: default
+layout: default-narrow
 title: Aria
 group: navigation
 permalink: aria/
 ---
 
-<div class="col-md-8 col-md-offset-2" id="home" role="main">
 <h1 class="page-header">Aria Attributes</h1>
 
 <table class="table table-condensed table-hover">
@@ -79,8 +78,10 @@ permalink: aria/
 
 <h1 class="page-header">Role Attributes</h1>
 
-<h2>Landmark Roles</h2>
-<p>Regions of the page intended to be navigational landmarks</p>
+## Landmark Roles
+
+Regions of the page intended to be navigational landmarks
+
 <table class="table table-condensed table-hover">
   <tbody>
     <tr><td><code>role="application"</code></td><td>A region declared as a web application, as opposed to a web document.</td></tr>
@@ -95,17 +96,10 @@ permalink: aria/
 </table>
 
 
+## Document Structure
 
+Describe structures that organize the page. Usually not interactive.
 
-
-
-
-
-
-
-
-<h2>Document Structure</h2>
-<p>Describe structures that organize the page. Usually not interactive.</p>
 <table class="table table-condensed table-hover">
   <tbody>
     <tr><td><code>role="article"</code></td><td>A section of a page that consists of a composition that forms an independent part of a document, page, or site.</td></tr>
@@ -130,8 +124,11 @@ permalink: aria/
   </tbody>
 </table>
 
-<h2>Widgets</h2>
-<p>Interactive, user interface widgets. Standalone, or apart of composite UI widgets.</p>
+
+## Widgets
+
+Interactive, user interface widgets. Standalone, or apart of composite UI widgets.
+
 <table class="table table-condensed table-hover">
   <tbody>
     <tr><td><code>role="alert"</code></td><td>A message with important, and usually time-sensitive, information. See related alertdialog and status.</td></tr>
@@ -162,8 +159,11 @@ permalink: aria/
   </tbody>
 </table>
 
-<h2>Composite UI Widgets</h2>
-<p>Typically containers that for other widgets.</p>
+
+## Composite UI Widgets
+
+Typically containers that for other widgets.
+
 <table class="table table-condensed table-hover">
   <tbody>
     <tr><td><code>role="combobox"</code></td><td>A presentation of a select; usually similar to a textbox where users can type ahead to select an option, or type to enter arbitrary text as a new item in the list. See related listbox.</td></tr>
@@ -179,10 +179,8 @@ permalink: aria/
 </table>
 
 
+## Abstract Roles
 
-
-
-<h2>Abstract Roles</h2>
 <table class="table table-condensed table-hover">
   <tbody>
     <tr>
@@ -235,5 +233,3 @@ permalink: aria/
     </tr>
   </tbody>
 </table>
-
-</div>

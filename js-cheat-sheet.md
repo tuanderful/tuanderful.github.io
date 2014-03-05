@@ -3,7 +3,7 @@ layout: default
 title: JS Cheat Sheet
 group: navigation
 markdown: redcarpet
-permalink: /
+permalink: js-cheat-sheet/
 ---
 
 <div class="col-md-10" role="main">

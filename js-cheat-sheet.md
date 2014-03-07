@@ -63,35 +63,35 @@ basket = fruits.splice(2, 3);
 
 ### Functions
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3">
   <strong>Function Declaration</strong>
 {% highlight javascript %}
 foo();    // works
 function foo() {
-  alert('hi');
+  console.log('hi');
 }
 foo();    // works
 {% endhighlight %}
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
   <strong>Function Expression</strong>
 {% highlight javascript %}
 foo();    // fails
 foo = function() {
-  alert('hi');
+  console.log('hi');
 }
 foo();    // works
 {% endhighlight %}
   </div>
-  <div class="col-md-4">
+  <div class="col-md-6">
   <strong>Named Function Expression</strong>
 {% highlight javascript %}
-foo();    // fails
-bar();    // fails
+foo();    // TypeError: undefined not a function
+bar();    // ReferenceError: bar is not defined
 foo = function bar() {
-  alert('hi');
+  console.log('hi');
 }
-foo();    // works
+foo();    // okay!
 bar();    // ReferenceError: bar is not defined
 {% endhighlight %}
   </div>

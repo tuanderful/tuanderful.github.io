@@ -154,3 +154,72 @@ bar();    // ReferenceError: bar is not defined
     </table>
   </div>
 </div>
+
+
+
+### Patterns
+
+#### Modular Design Patterns
+
+<div class="row">
+  <div class="col-md-6">
+    <h5>AMD</h5>
+{% highlight javascript %}
+define(function(require){
+  var lib = require( "package/lib" );
+
+  // behaviour for our module
+  function foo(){
+    lib.log( "hello world!" );
+  }
+
+  // export (expose) foo for other modules
+  return {
+    foobar: foo
+  };
+});
+
+// -- Consuming the module
+require(["foobar", "baz"], function ( foobar, baz ) {
+  // rest of your code here
+  foobar.doSomething();
+});
+{% endhighlight %}
+<ul>
+  <li>Browser-first approach to development</li>
+  <li>Asychronous</li>
+  <li>Require.js</li>
+</ul>
+  </div>
+  <div class="col-md-6">
+    <h5>CommonJS: require() and exports</h5>
+{% highlight javascript %}
+// -- foobar.js ------------------
+var lib = require( "package/lib" );
+ 
+// behaviour for our module
+function foo(){
+  lib.log( "hello world!" );
+}
+
+// export (expose) foo to other modules
+exports.foo = foo;
+
+
+
+
+// -- Consuming the module -------
+var foobar = require("./foobar.js").foobar,
+    test   = new foobar();
+
+ 
+{% endhighlight %}
+<ul>
+  <li>Server-first approach to development</li>
+  <li>File I/O</li>
+  <li>CommonJS, Node</li>
+</ul>
+  </div>
+</div>
+
+

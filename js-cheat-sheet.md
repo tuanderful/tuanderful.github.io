@@ -6,6 +6,15 @@ markdown: redcarpet
 permalink: js-cheat-sheet/
 ---
 
+<style>
+table .highlight {
+  margin: 0 10px 0 0;
+  border: none;
+  padding: 5px 7px;
+  border-radius: 0px;
+}
+
+</style>
 
 <h1 class="page-header">{{ page.title }}</h1>
 <p class="lead">
@@ -100,62 +109,181 @@ bar();    // ReferenceError: bar is not defined
 ### Document Object Model
 #### Document Type
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <h5>Properties</h5>
     <table>
-      <tr><td><code>document.anchors</code></td><td></td></tr>
-      <tr><td><code>document.applets</code></td><td></td></tr>
-      <tr><td><code>document.forms</code></td><td></td></tr>
-      <tr><td><code>document.images</code></td><td></td></tr>
-      <tr><td><code>document.links</code></td><td></td></tr>
-      <tr><td><code>document.readyState</code></td><td><code>loading</code><code>complete</code></td></tr>
+      <tr>
+        <td>{% highlight javascript %}document.anchors{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}document.applets{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}document.forms{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}document.images{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}document.links{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}document.readyState == 'loading'{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}document.readyState == 'interactive'{% endhighlight %}</td>
+        <td>DOMContentLoaded</td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}document.readyState == 'complete'{% endhighlight %}</td>
+        <td>sub-resources loaded</td>
+      </tr>
     </table>
-  </div>
-  <div class="col-md-6">
+  
     <h5>Methods</h5>
     <table>
-      <tr><td><code>document.getElementById()</code></td><td></td></tr>
-      <tr><td><code>document.getElementsByTagName()</code></td><td></td></tr>
-      <tr><td><code>document.getElementsByClassName()</code></td><td></td></tr>
-      <tr><td><code>document.querySelector()</code></td><td></td></tr>
-      <tr><td><code>document.createElement()</code></td><td></td></tr>
-      <tr><td><code>document.createDocumentFragment()</code></td><td></td></tr>
+      <tr>
+        <td>{% highlight javascript %}document.getElementById(){% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}document.getElementsByTagName(){% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}document.getElementsByClassName(){% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}document.querySelector(){% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>  <td>{% highlight javascript %}document.querySelectorAll('.some.selector'){% endhighlight %}</td>
+        <td>{% highlight javascript %}$('.some.selector');{% endhighlight %}</td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}document.createElement(){% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}document.createDocumentFragment(){% endhighlight %}</td>
+        <td></td>
+      </tr>
     </table>
   </div>
 </div>
 
 #### Element Type
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <h5>Properties</h5>
     <table>
-      <tr><td><code>element.childElementCount</code></td><td></td></tr>
-      <tr><td><code>element.firstElementChild</code></td><td></td></tr>
-      <tr><td><code>element.lastElementChild</code></td><td></td></tr>
-      <tr><td><code>element.previousElementSibling</code></td><td></td></tr>
-      <tr><td><code>element.nextElementSibling</code></td><td></td></tr>
-      <tr><td><code>element.className</code></td><td></td></tr>
-      <tr><td><code>element.classList</code></td><td>
-        <code>add()</code>,
-        <code>remove()</code>,
-        <code>contains()</code>,
-        <code>toggle()</code>
-      </td></tr>
+      <tr>
+        <td>{% highlight javascript %}element.childElementCount{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}element.firstElementChild{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}element.lastElementChild{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}element.previousElementSibling{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}element.nextElementSibling{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}element.className{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}element.classList{% endhighlight %}</td>
+        <td>
+        {% highlight javascript %}add(){% endhighlight %},
+        {% highlight javascript %}remove(){% endhighlight %},
+        {% highlight javascript %}contains(){% endhighlight %},
+        {% highlight javascript %}toggle(){% endhighlight %}
+      </td>
+      </tr>
     </table>
-  </div>
-  <div class="col-md-6">
+
     <h5>Methods</h5>
     <table>
-      <tr><td><code>element.getElementById()</code></td><td></td></tr>
-      <tr><td><code>element.getElementByTagName()</code></td><td></td></tr>
-      <tr><td><code>element.querySelector()</code></td><td></td></tr>
-      <tr><td><code>element.createElement()</code></td><td></td></tr>
-      <tr><td><code>element.createDocumentFragment()</code></td><td></td></tr>
+      <tr>
+        <td>{% highlight javascript %}element.getElementById(){% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}element.getElementByTagName(){% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}element.querySelector(){% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}element.createElement(){% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}element.createDocumentFragment(){% endhighlight %}</td>
+        <td></td>
+      </tr>
     </table>
   </div>
 </div>
 
+### AJAX
+<div class="row">
+  <div class="col-md-6">
+    <h5>jQuery</h5>
+{% highlight javascript %}
+$.ajax({
+  type: 'GET',
+  url: '/my/url',
+  success: function(resp) {
 
+  },
+  error: function() {
+
+  }
+});
+{% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    <h5>IE9+</h5>
+{% highlight javascript %}
+request = new XMLHttpRequest();
+request.open('get', '/my/url', true);
+
+request.onload = function() {
+  if (request.status >= 200 && request.status < 400) {
+    resp = request.responseText;
+  } else {
+    // target server reached, error returned
+  }
+}
+
+request.error = function() {
+  // connection error
+}
+
+request.send();
+{% endhighlight %}
+  </div>
+</div>
 
 ### Patterns
 

@@ -7,13 +7,22 @@ permalink: js-cheat-sheet/
 ---
 
 <style>
-table .highlight {
-  margin: 0 10px 0 0;
+table.js-api .highlight {
+  margin: 0;
   border: none;
-  padding: 5px 7px;
+  padding: 0;
   border-radius: 0px;
+  background: none;
 }
 
+.js-api td:nth-child(3) {
+  width: 350px;
+}
+.js-api td:nth-child(2) {
+}
+.js-api td:nth-child(1) {
+  width: 550px;
+}
 </style>
 
 <h1 class="page-header">{{ page.title }}</h1>
@@ -36,6 +45,7 @@ basket = fruits.slice(2, 3);
   </div>
   <div class="col-md-4">
     <ul>
+      <li><code>(start, end)</code>, exclusive of end</li>
       <li>Creates a shallow <strong>copy</strong></li>
       <li>Leaves <strong>original array unchanged</strong></li>
       <li>Returns an array of copied elements</li>
@@ -55,6 +65,7 @@ basket = fruits.splice(2, 3);
   </div>
   <div class="col-md-4">
     <ul>
+      <li><code>(start, count)</code>
       <li>Removes <code>count</code> number of elements from the array</li>
       <li>Inserts new elements into the original array</li>
       <li>Returns an array of the removed elements (possibly empty)</li>
@@ -111,68 +122,84 @@ bar();    // ReferenceError: bar is not defined
 <div class="row">
   <div class="col-md-12">
     <h5>Properties</h5>
-    <table>
+    <table class="table table-condensed js-api">
       <tr>
         <td>{% highlight javascript %}document.anchors{% endhighlight %}</td>
+        <td></td>
         <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}document.applets{% endhighlight %}</td>
         <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}document.forms{% endhighlight %}</td>
+        <td></td>
         <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}document.images{% endhighlight %}</td>
         <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}document.links{% endhighlight %}</td>
+        <td></td>
         <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}document.readyState == 'loading'{% endhighlight %}</td>
         <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}document.readyState == 'interactive'{% endhighlight %}</td>
         <td>DOMContentLoaded</td>
+        <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}document.readyState == 'complete'{% endhighlight %}</td>
         <td>sub-resources loaded</td>
+        <td></td>
       </tr>
     </table>
   
     <h5>Methods</h5>
-    <table>
+    <table class="table table-condensed js-api">
       <tr>
         <td>{% highlight javascript %}document.getElementById(){% endhighlight %}</td>
+        <td></td>
         <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}document.getElementsByTagName(){% endhighlight %}</td>
         <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}document.getElementsByClassName(){% endhighlight %}</td>
         <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}document.querySelector(){% endhighlight %}</td>
         <td></td>
       </tr>
-      <tr>  <td>{% highlight javascript %}document.querySelectorAll('.some.selector'){% endhighlight %}</td>
+      <tr>
+        <td>{% highlight javascript %}document.querySelector('.some.selector'){% endhighlight %}</td>
+        <td>{% highlight javascript %}$('.some.selector')[0];{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}document.querySelectorAll('.some.selector'){% endhighlight %}</td>
+        <td>Returns array of 0 or more matched elements</td>
         <td>{% highlight javascript %}$('.some.selector');{% endhighlight %}</td>
       </tr>
       <tr>
         <td>{% highlight javascript %}document.createElement(){% endhighlight %}</td>
         <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}document.createDocumentFragment(){% endhighlight %}</td>
+        <td></td>
         <td></td>
       </tr>
     </table>
@@ -183,29 +210,35 @@ bar();    // ReferenceError: bar is not defined
 <div class="row">
   <div class="col-md-12">
     <h5>Properties</h5>
-    <table>
+    <table class="table table-condensed js-api">
       <tr>
         <td>{% highlight javascript %}element.childElementCount{% endhighlight %}</td>
+        <td>Number of children</td>
         <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}element.firstElementChild{% endhighlight %}</td>
         <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}element.lastElementChild{% endhighlight %}</td>
+        <td></td>
         <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}element.previousElementSibling{% endhighlight %}</td>
         <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}element.nextElementSibling{% endhighlight %}</td>
         <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}element.className{% endhighlight %}</td>
+        <td></td>
         <td></td>
       </tr>
       <tr>
@@ -215,30 +248,36 @@ bar();    // ReferenceError: bar is not defined
         {% highlight javascript %}remove(){% endhighlight %},
         {% highlight javascript %}contains(){% endhighlight %},
         {% highlight javascript %}toggle(){% endhighlight %}
-      </td>
+        </td>
+        <td></td>
       </tr>
     </table>
 
     <h5>Methods</h5>
-    <table>
+    <table class="table table-condensed js-api">
       <tr>
         <td>{% highlight javascript %}element.getElementById(){% endhighlight %}</td>
+        <td>$('#...')</td>
         <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}element.getElementByTagName(){% endhighlight %}</td>
         <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}element.querySelector(){% endhighlight %}</td>
+        <td></td>
         <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}element.createElement(){% endhighlight %}</td>
         <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>{% highlight javascript %}element.createDocumentFragment(){% endhighlight %}</td>
+        <td></td>
         <td></td>
       </tr>
     </table>

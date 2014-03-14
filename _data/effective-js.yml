@@ -1,0 +1,82 @@
+- name: 1 - Accustoming Yourself to JavaScript
+  sections:
+    - name: 1 - Know Which JavaScript You Are Using
+    - name: 2 - Understand JavaScript’s Floating-Point Numbers
+    - name: 3 - Beware of Implicit Coercions
+    - name: 4 - Prefer Primitives to Object Wrappers
+    - name: 5 - Avoid using == with Mixed Types
+    - name: 6 - Learn the Limits of Semicolon Insertion
+    - name: 7 - Think of Strings As Sequences of 16-Bit Code Units
+- name: 2 - Variable Scope
+  sections:
+    - name: 8 - Minimize Use of the Global Object
+    - name: 9 - Always Declare Local Variables
+    - name: 10 - Avoid with
+    - name: 11 - Get Comfortable with Closures
+    - name: 12 - Understand Variable Hoisting
+    - name: 13 - Use Immediately Invoked Function Expressions to Create Local Scopes
+    - name: 14 - Beware of Unportable Scoping of Named Function Expressions
+    - name: 15 - Beware of Unportable Scoping of Block-Local Function Declarations
+    - name: 16 - Avoid Creating Local Variables with eval
+    - name: 17 - Prefer Indirect eval to Direct eval
+- name: 3 - Working with Functions
+  sections:
+    - name: 18 - Understand the Difference between Function
+    - name: 19 - Get Comfortable Using Higher-Order Functions
+    - name: 20 - Use call to Call Methods with a Custom Receiver
+    - name: 21 - Use apply to Call Functions with Different Numbers of Arguments
+    - name: 22 - Use arguments to Create Variadic Functions
+    - name: 23 - Never Modify the arguments Object
+    - name: 24 - Use a Variable to Save a Reference to arguments
+    - name: 25 - Use bind to Extract Methods with a Fixed Receiver
+    - name: 26 - Use bind to Curry Functions
+    - name: 27 - Prefer Closures to Strings for Encapsulating Code
+    - name: 28 - Avoid Relying on the toString Method of Functions
+    - name: 29 - Avoid Nonstandard Stack Inspection Properties
+- name: 4 - Objects and Prototypes
+  sections:
+    - name: 30 - Understand the Difference between prototype
+    - name: 31 - Prefer Object.getPrototypeOf to __proto__
+    - name: 32 - Never Modify __proto__
+    - name: 33 - Make Your Constructors new-Agnostic
+    - name: 34 - Store Methods on Prototypes
+    - name: 35 - Use Closures to Store Private Data
+    - name: 36 - Store Instance State Only on Instance Objects
+    - name: 37 - Recognize the Implicit Binding of this
+    - name: 38 - Call Superclass Constructors from Subclass Constructors
+    - name: 39 - Never Reuse Superclass Property Names
+    - name: 40 - Avoid Inheriting from Standard Classes
+    - name: 41 - Treat Prototypes As an Implementation Detail
+    - name: 42 - Avoid Reckless Monkey-Patching
+- name: 5 - Arrays and Dictionaries
+  sections:
+    - name: 43 - Build Lightweight Dictionaries from Direct Instances of Object
+    - name: 44 - Use null Prototypes to Prevent Prototype Pollution
+    - name: 45 - Use hasOwnProperty to Protect Against Prototype Pollution
+    - name: 46 - Prefer Arrays to Dictionaries for Ordered Collections
+    - name: 47 - Never Add Enumerable Properties to Object.prototype
+    - name: 48 - Avoid Modifying an Object during Enumeration
+    - name: 49 - Prefer for Loops to for...in Loops for Array Iteration
+    - name: 50 - Prefer Iteration Methods to Loops
+    - name: 51 - Reuse Generic Array Methods on Array-Like Objects
+    - name: 52 - Prefer Array Literals to the Array Constructor
+- name: 6 - Library and API Design
+  sections:
+    - name: 53 - Maintain Consistent Conventions
+    - name: 54 - Treat undefined As “No Value”
+    - name: 55 - Accept Options Objects for Keyword Arguments
+    - name: 56 - Avoid Unnecessary State
+    - name: 57 - Use Structural Typing for Flexible Interfaces
+    - name: 58 - Distinguish between Array and Array-Like
+    - name: 59 - Avoid Excessive Coercion
+    - name: 60 - Support Method Chaining
+- name: 7 - Concurrency
+  sections:
+    - name: 61 - Don’t Block the Event Queue on I/O
+    - name: 62 - Use Nested or Named Callbacks for Asynchronous Sequencing
+    - name: 63 - Be Aware of Dropped Errors
+    - name: 64 - Use Recursion for Asynchronous Loops
+    - name: 65 - Don’t Block the Event Queue on Computation
+    - name: 66 - Use a Counter to Perform Concurrent Operations
+    - name: 67 - Never Call Asynchronous Callbacks Synchronously
+    - name: 68 - Use Promises for Cleaner Asynchronous Logic

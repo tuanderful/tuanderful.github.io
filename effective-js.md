@@ -94,3 +94,21 @@ s1 == s2;         // false
 {% highlight javascript %}
 "hello".toUpperCase();   // "HELLO"
 {% endhighlight %}
+
+
+<!--ul>
+{% for chapter in site.data.effective-js %}
+  <li>
+    <a href="https://github.com/{{ chapter.name }}">
+      {{ chapter.name }}
+    </a>
+    <ul>
+    {% for item in chapter.sections %}
+      <li>
+        {{ item.name }}
+      </li>
+    {% endfor %}
+    </ul>
+  </li>
+{% endfor %}
+</ul-->

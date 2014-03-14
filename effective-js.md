@@ -16,8 +16,6 @@ permalink: effective-js/
 }
 </style>
 
-<h1 class="page-header">{{ page.title }}</h1>
-
 ### Accustoming Yourself to JavaScript
 
 
@@ -99,7 +97,6 @@ s1 == s2;         // false
 "hello".toUpperCase();   // "HELLO"
 {% endhighlight %}
 
-<<<<<<< HEAD
 * You can set properties on primitives, as they are implicitly wrapped. After the set, the object is destroyed, so the properties don't persist.
 {% highlight javascript %}
 "hello".someProperty = 17;
@@ -179,12 +176,6 @@ function infiniteLoop() { while (true) }    // parse error
 {% endhighlight %}
 
 
-
-
-
-
-=======
-
 <!--ul>
 {% for chapter in site.data.effective-js %}
   <li>
@@ -201,4 +192,3 @@ function infiniteLoop() { while (true) }    // parse error
   </li>
 {% endfor %}
 </ul-->
->>>>>>> FETCH_HEAD

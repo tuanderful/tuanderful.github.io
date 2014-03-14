@@ -5,8 +5,6 @@ group: navigation
 permalink: aria/
 ---
 
-<h1 class="page-header">Aria Attributes</h1>
-
 <table class="table table-condensed table-hover">
   <thead>
   </thead>

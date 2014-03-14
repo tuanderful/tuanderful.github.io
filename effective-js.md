@@ -99,6 +99,7 @@ s1 == s2;         // false
 "hello".toUpperCase();   // "HELLO"
 {% endhighlight %}
 
+<<<<<<< HEAD
 * You can set properties on primitives, as they are implicitly wrapped. After the set, the object is destroyed, so the properties don't persist.
 {% highlight javascript %}
 "hello".someProperty = 17;
@@ -182,3 +183,22 @@ function infiniteLoop() { while (true) }    // parse error
 
 
 
+=======
+
+<!--ul>
+{% for chapter in site.data.effective-js %}
+  <li>
+    <a href="https://github.com/{{ chapter.name }}">
+      {{ chapter.name }}
+    </a>
+    <ul>
+    {% for item in chapter.sections %}
+      <li>
+        {{ item.name }}
+      </li>
+    {% endfor %}
+    </ul>
+  </li>
+{% endfor %}
+</ul-->
+>>>>>>> FETCH_HEAD

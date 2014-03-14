@@ -10,6 +10,10 @@ permalink: effective-js/
 .highlight {
   margin: 0 40px 14px;
 }
+.table {
+  width: 537px;
+  margin-left: 40px;
+}
 </style>
 
 <h1 class="page-header">{{ page.title }}</h1>
@@ -80,7 +84,7 @@ if (typeof x === 'undefined')
 {% endhighlight %}
 
 
-#### 4. Primitives over Object Wrappers
+#### 4. Primitives over Primitive Wrappers
 
 * A String object is only equal to itself
 {% highlight javascript %}
@@ -90,7 +94,91 @@ s1 === s2;        // false
 s1 == s2;         // false
 {% endhighlight %}
 
-* JavaScript implicitly coerces primitives so that they may be used with methods on the Object wrapper.
+* JavaScript implicitly coerces primitives so that they may be used with methods on the Primitive wrapper.
 {% highlight javascript %}
 "hello".toUpperCase();   // "HELLO"
 {% endhighlight %}
+
+* You can set properties on primitives, as they are implicitly wrapped. After the set, the object is destroyed, so the properties don't persist.
+{% highlight javascript %}
+"hello".someProperty = 17;
+"hello".someProperty;       // undefined
+{% endhighlight %}
+
+
+#### 5. Avoid using == with mixed types
+
+* Explicitly coerce primitives to numbers before comparison with unary `+` operator
+
+* The following coercion rules apply when using ==
+
+<table class="table table-condensed">
+  <tr>
+    <th>Argument</th>
+    <th>Coerces to</th>
+  </tr>
+  <tr>
+    <td>string, number, boolean</td>
+    <td>number</td>
+  </tr>
+  <tr>
+    <td><code>Date</code></td>
+    <td>toString, valueOf</td>
+  </tr>
+  <tr>
+    <td>Non-<code>Date</code> object</td>
+    <td>valueOf, toString</td>
+  </tr>
+</table>
+
+* `null == undefined`
+* `null` and `undefined` evaluate to false when compared to anything other than `null` or `undefined`
+
+{% highlight javascript %}
+var date = new Date("1999/12/31");    // date => date.toString() => "Fri Dec 31 1999 00:00:00 GMT-0800 (PST)"
+date == "1999/12/31";                 // false
+{% endhighlight %}
+
+
+#### 6. Limits of Semicolon Insertion
+
+* Semicolons are only inserted:
+  * before }
+  * after one more more newlines
+  * end of program
+  * next input token cannot be parsed
+
+{% highlight javascript %}
+a = b
+(f());    // => a = b(f()); // parses OK - no ; is inserted
+
+a = b
+f();      // => a = b f();  // doesn't parse, ; is inserted
+{% endhighlight %}
+
+* Five problematic characters: `(`, `[`, `+`, `-`, `/`
+  * Never omit before a statement with problem character
+  * Can act as an expression operator, so newlines starting with these won't have semi-colon inserted
+{% highlight javascript %}
+a = b
+["r", "g", "b"].forEach(...)
+
+a = b['r', 'g', 'b'].forEach()  // a = b['b'].forEach()
+{% endhighlight %}
+
+* Never put newline before argument to `return` `throw`, `break`, `continue`, `++`, or `--`
+
+* Semi-colons never inserted in head of `for` loop
+
+* Semi-colons never inserted as empty statement
+
+{% highlight javascript %}
+function infiniteLoop() { while (true) }    // parse error
+// must add ; after while()
+{% endhighlight %}
+
+
+
+
+
+

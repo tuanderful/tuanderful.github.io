@@ -324,6 +324,146 @@ request.send();
   </div>
 </div>
 
+
+### Object Internals
+
+<div class="row">
+  <div class="col-md-6">
+    <h4>Internal Methods</h4>
+    <table class="table table-condensed">
+      <tbody>
+        <tr>
+          <th><code>[[Put]]</code></th>
+          <td>Method: Add an <em>own</em> property to an object</td>
+        </tr>
+        <tr>
+          <th><code>[[Set]]</code></th>
+          <td>Method: Modify a property already on an object</td>
+        </tr>
+        <tr>
+          <th><code>[[Delete]]</code></th>
+          <td>Method: remove a property. Called by <code>delete</code> operator.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <h4>Methods Inherited from Object.prototype</h4>
+    <table class="table table-condensed">
+      <tbody>
+        <tr>
+          <th><code>hasOwnProperty()</code></th>
+          <td>Determine if <em>own</em> property exists with given name</td>
+        </tr>
+        <tr>
+          <th><code>propertyIsEnumerable()</code></th>
+          <td>Determine if property is enumerable</td>
+        </tr>
+        <tr>
+          <th><code>isPrototypeOf()</code></th>
+          <td>Determine if object is prototype of another</td>
+        </tr>
+        <tr>
+          <th><code>valueOf()</code></th>
+          <td>Called when operator is used on an object</td>
+        </tr>
+        <tr>
+          <th><code>toString()</code></th>
+          <td>Called when <code>valueOf()</code> returns a reference value instead of primitive.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+* All properties added to an object are *enumerable* by default
+  * Iterable with a `for-in` loop
+  * Has an internal `[[Enumerable]]` attribute set to true
+
+
+#### Types of Properties
+
+<div class="row">
+  <div class="col-md-6">
+    <h5>Data Properties</h5>
+    
+  </div>
+  <div class="col-md-6">
+    <h5>Accessor Properties</h5>
+    
+  </div>
+
+  <div class="col-md-12">
+    <table class="table table-condensed">
+      <tbody>
+        <tr>
+          <th></th>
+          <th>Data Properties</th>
+          <th>Accessor Properties</th>
+          <th>Sealed</th>
+          <th>Frozen</th>
+        </tr>
+        <tr>
+          <th><code>[[Value]]</code></th>
+          <td>Automatically filled, even functions</td>
+          <td>N/A</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th><code>[[Enumerable]]</code></th>
+          <td><code>true</code></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th><code>[[Configurable]]</code></th>
+          <td><code>true</code></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th><code>[[Writable]]</code></th>
+          <td><code>true</code><br />Throw an error if attempt to change a nonwritable prop</td>
+          <td>N/A</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th><code>[[Get]]</code></th>
+          <td>N/A</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th><code>[[Set]]</code></th>
+          <td>N/A</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+#### Defining an Accessor Property via Object Literal
+
+{% highlight javascript %}
+var person1 = {
+  _name: "Nicholas",
+
+  get name() {        // ES5
+    // ...
+  }
+}{% endhighlight %}
+
+
+
+
 ### Patterns
 
 #### Modular Design Patterns

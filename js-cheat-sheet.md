@@ -357,7 +357,7 @@ request.send();
         </tr>
         <tr>
           <th><code>propertyIsEnumerable()</code></th>
-          <td>Determine if property is enumerable</td>
+          <td>Determine if property is enumerable (has enumerable attribute = true)</td>
         </tr>
         <tr>
           <th><code>isPrototypeOf()</code></th>
@@ -384,69 +384,77 @@ request.send();
 #### Types of Properties
 
 <div class="row">
-  <div class="col-md-6">
-    <h5>Data Properties</h5>
-    
-  </div>
-  <div class="col-md-6">
-    <h5>Accessor Properties</h5>
-    
-  </div>
-
   <div class="col-md-12">
     <table class="table table-condensed">
       <tbody>
         <tr>
-          <th></th>
+          <th>Property Attribute</th>
           <th>Data Properties</th>
           <th>Accessor Properties</th>
-          <th>Sealed</th>
-          <th>Frozen</th>
         </tr>
         <tr>
-          <th><code>[[Value]]</code></th>
+          <td><code>[[Value]]</code></td>
           <td>Automatically filled, even functions</td>
           <td>N/A</td>
-          <td></td>
-          <td></td>
         </tr>
         <tr>
-          <th><code>[[Enumerable]]</code></th>
+          <td><code>[[Enumerable]]</code><br />Counted by Object.keys()</td>
           <td><code>true</code></td>
           <td></td>
-          <td></td>
-          <td></td>
         </tr>
         <tr>
-          <th><code>[[Configurable]]</code></th>
+          <td><code>[[Configurable]]</code><br />Can remove with delete, or update config</td>
           <td><code>true</code></td>
           <td></td>
-          <td></td>
-          <td></td>
         </tr>
         <tr>
-          <th><code>[[Writable]]</code></th>
+          <td><code>[[Writable]]</code></td>
           <td><code>true</code><br />Throw an error if attempt to change a nonwritable prop</td>
           <td>N/A</td>
-          <td></td>
+        </tr>
+        <tr>
+          <td><code>[[Get]]</code></td>
+          <td>N/A</td>
           <td></td>
         </tr>
         <tr>
-          <th><code>[[Get]]</code></th>
+          <td><code>[[Set]]</code></td>
           <td>N/A</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th><code>[[Set]]</code></th>
-          <td>N/A</td>
-          <td></td>
-          <td></td>
           <td></td>
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+#### Preventing Object Modification
+
+<div class="row">
+  <div class="col-md-4">
+    <h5>Prevent Extension</h5>
+    <p>Cannot add properties</p>
+    {% highlight javascript %}
+Object.isExtensible(obj);
+Object.preventExtensions(obj);{% endhighlight %}
+  </div>
+  <div class="col-md-4">
+    <h5>Seal</h5>
+    <p>Cannot add properties</p>
+    <p>Cannot remove properties</p>
+    <p>Cannot change property type (data &hArr; acc)</p>
+{% highlight javascript %}
+Object.isSealed(obj);
+Object.seal(obj);{% endhighlight %}
+  </div>
+  <div class="col-md-4">
+    <h5>Freeze</h5>
+    <p>Cannot add properties</p>
+    <p>Cannot remove properties</p>
+    <p>Cannot change property type (data &hArr; acc)</p>
+    <p>Cannot write to data property</p>
+    {% highlight javascript %}
+Object.isFrozen(obj);
+Object.freeze(obj);{% endhighlight %}
   </div>
 </div>
 

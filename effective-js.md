@@ -14,6 +14,15 @@ permalink: effective-js/
   width: 537px;
   margin-left: 40px;
 }
+
+h3 {
+  font-weight: 600;
+  margin-top: 48px;
+}
+
+h4 {
+  margin-top: 36px;
+}
 </style>
 
 ### Accustoming Yourself to JavaScript
@@ -174,6 +183,64 @@ a = b['r', 'g', 'b'].forEach()  // a = b['b'].forEach()
 function infiniteLoop() { while (true) }    // parse error
 // must add ; after while()
 {% endhighlight %}
+
+
+#### 7. 16-bit Code Units
+
+* JavaScript strings consist of 16-bit code units
+* One *code point* such as &#x1d11e; can contain two *code units* (known as surrogate pairs)
+* Cannot rely on `length`, `charAt`, and `charCodeAt`
+
+<table class="table table-condensed" id="item-7-table">
+<style scoped>
+#item-7-table td {
+  text-align: center;
+  font-size: .85em;
+}
+</style>
+<tr>
+  <td colspan="2">&#x1d11e;</td>
+  <td></td>
+  <td>c</td>
+  <td>l</td>
+  <td>e</td>
+  <td>f</td>
+</tr>
+<tr>
+  <td>0xd834</td>
+  <td>0xdd1e</td>
+  <td>0x0020</td>
+  <td>0x0063</td>
+  <td>0x006c</td>
+  <td>0x0065</td>
+  <td>0x0066</td>
+</tr>
+</table>
+
+
+### Variable Scope
+
+#### 8. Minimize Use of Global Object
+* Use global for feature detection, like `if (!this.JSON)`
+* Calling a constructor without new may introduce variables into global scope
+{% highlight javascript %}
+function Person(name) {
+  this.name = name
+}
+var person = Person("Tuan");              // this binds to global scope
+console.log(person instanceof Person);    // false
+console.log(typeof person);               // "undefined"
+console.log(name);                        // "Tuan" - defined under window.name
+{% endhighlight %}
+
+
+#### 9. Always Declare Local Variables
+* Variables not initialized with `var` are crated on global scope
+
+#### 10. Avoid with
+* `with` treats an object as if it represented a variable scope
+* Explicitly bind local variables to object properties instead of implicitly binding with `with`
+
 
 
 <!--ul>

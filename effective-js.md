@@ -235,11 +235,49 @@ console.log(name);                        // "Tuan" - defined under window.name
 
 
 #### 9. Always Declare Local Variables
-* Variables not initialized with `var` are crated on global scope
+* Variables not initialized with `var` are created on global scope
+
 
 #### 10. Avoid with
 * `with` treats an object as if it represented a variable scope
+* Tempting to use to "import" variables
+{% highlight javascript %}
+function f(x, y) {
+  with (Math) {
+    return min(round(x), sqrt(y));     // hosed if someone defines (Math.x = 0)
+  }
+}{% endhighlight %}
 * Explicitly bind local variables to object properties instead of implicitly binding with `with`
+
+
+#### 11. Get comfortable with Closures
+* Function that keeps track of variables in its containing scope
+* Closures store ***references*** to outer variables
+
+
+#### 12. Understand Variable Hoisting
+* *Lexical scoping*, scoped to containing function, not *block scoping*
+* Variable declaration consists of declaration (hoisted to top) and assignment
+* `catch` block is block level scoping
+{% highlight javascript %}
+function test(){
+  var x = "var", result = [];
+  result.push(x);
+  try {
+    throw "exception";
+  } catch (x) {
+    x = "catch";
+    result.push(x);
+  }
+  result.push(x);
+  return result;       // => ['var', 'catch', 'var']
+}{% endhighlight %}
+* Place all variables at the top
+
+
+#### 13. Use IIFE to Create Local Scope
+* **Binding**
+* **Assignment**
 
 
 

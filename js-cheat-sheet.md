@@ -14,15 +14,6 @@ table.js-api .highlight {
   border-radius: 0px;
   background: none;
 }
-
-.js-api td:nth-child(3) {
-  width: 350px;
-}
-.js-api td:nth-child(2) {
-}
-.js-api td:nth-child(1) {
-  width: 550px;
-}
 </style>
 
 <h1 class="page-header">{{ page.title }}</h1>
@@ -118,6 +109,98 @@ bar();    // ReferenceError: bar is not defined
 </div>
 
 ### Document Object Model
+#### Node Type
+
+All node types inherit from <code>Node</code> in JavaScript. A node <code>n</code> shares the same basic properties:
+
+
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-condensed js-api">
+      <tr>
+        <td>{% highlight javascript %}n.nodeType{% endhighlight %}</td>
+        <td>A number from 1 - 12</td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}n.nodeName{% endhighlight %}</td>
+        <td>For elements, the tag name</td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}n.nodeValue{% endhighlight %}</td>
+        <td>For elements, always <code>null</code></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}n.childNodes{% endhighlight %}</td>
+        <td>A <code>NodeList</code>, an array like object of child nodes.
+          <br />Can be accessed via bracket notation, <code>n.childNodes(0)</code>
+          <br />or the <code>item()</code> method, <code>n.childNodes.item(1)</code>
+          <br />Also contains a <code>length</code> property.
+        </td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}n.parentNode{% endhighlight %}</td>
+        <td>Parent in the document tree</td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}n.previousSibling{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}n.nextSibling{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}n.firstChild{% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}n.lastChild{% endhighlight %}</td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <table class="table table-condensed js-api">
+      <tr>
+        <td>{% highlight javascript %}n.hasChildNodes(){% endhighlight %}</td>
+        <td>More efficient than <code>n.childNodes.length</code></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}n.ownerDocument(){% endhighlight %}</td>
+        <td>Quick way to access <code>Document</code> node rather than traversing up the node hierarchy</td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}n.appendChild(){% endhighlight %}</td>
+        <td>Add node to the end of <code>childNodes</code>.
+        <br />If passing in a <code>node</code>, remove it from previous location.</td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}n.insertBefore(){% endhighlight %}</td>
+        <td>Accepts two arguments: node to insert and reference node.
+        <br /><code>null</code> reference node? Act as <code>.appendChild()</code></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}n.replaceChild(){% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}n.removeChild(){% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}n.cloneNode(){% endhighlight %}</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>{% highlight javascript %}n.normalize(){% endhighlight %}</td>
+        <td>Remove empty text nodes and join text nodes that are immediate siblings.</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+
 #### Document Type
 <div class="row">
   <div class="col-md-12">
@@ -441,7 +524,7 @@ Object.preventExtensions(obj);{% endhighlight %}
     <h5>Seal</h5>
     <p>Cannot add properties</p>
     <p>Cannot remove properties</p>
-    <p>Cannot change property type (data &hArr; acc)</p>
+    <p>Cannot change property type (data &hArr; accessor)</p>
 {% highlight javascript %}
 Object.isSealed(obj);
 Object.seal(obj);{% endhighlight %}
@@ -450,7 +533,7 @@ Object.seal(obj);{% endhighlight %}
     <h5>Freeze</h5>
     <p>Cannot add properties</p>
     <p>Cannot remove properties</p>
-    <p>Cannot change property type (data &hArr; acc)</p>
+    <p>Cannot change property type (data &hArr; accessor)</p>
     <p>Cannot write to data property</p>
     {% highlight javascript %}
 Object.isFrozen(obj);
@@ -471,10 +554,11 @@ var person1 = {
 
 
 
-
 ### Patterns
 
 #### Modular Design Patterns
+
+
 
 <div class="row">
   <div class="col-md-6">

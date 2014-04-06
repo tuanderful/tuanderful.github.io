@@ -251,14 +251,16 @@ function f(x, y) {
 
 
 #### 11. Get comfortable with Closures
-* Function that keeps track of variables in its containing scope
-* Closures store ***references*** to outer variables
+* Function that keeps track of variables in its containing scope.
+* Closures can outlive the function that creates them.
+* Closures store ***references*** to outer variables. Updates to variables are 
+  visible to any closures that have access to them.
 
 
 #### 12. Understand Variable Hoisting
 * *Lexical scoping*, scoped to containing function, not *block scoping*
 * Variable declaration consists of declaration (hoisted to top) and assignment
-* `catch` block is block level scoping
+* **Exception* to function-scope** `catch` block is block-level scoping
 {% highlight javascript %}
 function test(){
   var x = "var", result = [];
@@ -276,8 +278,49 @@ function test(){
 
 
 #### 13. Use IIFE to Create Local Scope
-* **Binding**
-* **Assignment**
+* Entering a scope at runtime allocates a slot in memory for each variable binding.
+
+* A common problem with loops and closures:
+  * The *value* `i` is not used, the reference is. Since `i` continues to change,
+    the inner functions see the final value of `i`
+
+{% highlight javascript %}
+function wrapEle(a) {
+  var result = [], i, n;
+  for (i = 0, n = a.length; i < n; i++) {
+    result[i] = function() { return a[i]; };
+  }
+  return result
+}{% endhighlight %}
+
+* Use an IIFE (*iffy*) to force the creation of a local scope to hold the value of `i`
+
+{% highlight javascript %}
+function wrapEle(a) {
+  var result = [], i, n;
+  for (i = 0, n = a.length; i < n; i++) {
+    (function () {
+      var j = i;
+      result[i] = function() { return a[j]; };
+    })();
+  }
+  return result
+}{% endhighlight %}
+
+
+#### 14. Beware of Unportable Scoping of Named Functions
+
+* Difference between anonymous and named function is the latter binds its name as a local variable
+
+{% highlight javascript %}
+var f = function find(k, v){
+  // internally, there is a local variable `find`
+}{% endhighlight %}
+
+* Externally, we cannot reference the internal name
+
+
+
 
 
 

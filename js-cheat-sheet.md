@@ -108,6 +108,30 @@ bar();    // ReferenceError: bar is not defined
   </div>
 </div>
 
+
+### Browser Object Model
+#### Window Object
+* Acts as `Global` object. Variables added to global scope via `var` have their `[[Configurable]]` attribute set to `false` and cannot be removed via `delete`.
+* If `foo` is not defined, trying to access `foo` will throw a `Reference Error: foo is not defined` while `window.foo` will return undefined (because it is a property lookup).
+* Each frame has its own `window` object. `top` ferences the outermost frame, `parent` points to the current frame's immediate parent frame.
+* `window.screenLeft`, `window.screenX`, `window.screenTop`, `window.screenY`
+* `window.innerWidth`, `window.innerHeight`, `window.outerWidth`, `window.outerHeight`
+  * `window.resizeTo()`, `window.resizeBy()`
+* `window.open()` can return null if pop-up blocker prevents it from happening. `window.close()` to close.
+* `setTimeout()` and `setInterval()` are window methods.
+  * Avoid intervals, better to recurseviely call `setTimeout()`
+
+#### Location Object
+* `hash`, `hostname`, `href`, `pathname`, `search` (query string)
+* Set `window.location` to navigate
+* `replace()` to navigate to a URL but not update the history stack
+* `reload()` reloads current page
+
+#### Navigator Object
+_TODO_
+* Browser information
+
+
 ### Document Object Model
 #### Node Type
 

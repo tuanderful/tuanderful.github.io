@@ -1,7 +1,6 @@
 ---
 layout: default-narrow
 title: Aria
-group: navigation
 permalink: aria/
 ---
 

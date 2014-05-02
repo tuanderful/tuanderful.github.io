@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Idiomatic
-group: navigation
 permalink: idiomatic/
 ---
 

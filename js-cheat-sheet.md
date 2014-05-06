@@ -16,6 +16,72 @@ table.js-api .highlight {
 }
 </style>
 
+<h1 class="page-header">Methods</h1>
+
+### Array
+<table class="table table-condensed">
+  <tr>
+    <td><code>array.concat(items)</code></td>
+    <td>Create shallow copy of <code>array</code> with <code>items</code> added to the end.</td>
+  </tr>
+  <tr>
+    <td><code>array.join(separator)</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>array.pop()</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>array.push()</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>array.reverse()</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>array.shift()</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>array.unshift(item)</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>array.slice(start, end)</code></td>
+    <td>Shallow copy</td>
+  </tr>
+  <tr>
+    <td><code>array.splice()</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>array.sort(comparator)</code></td>
+    <td>comparator = function(a, b){}</td>
+  </tr>
+</table>
+
+
+### Function
+
+<table class="table table-condensed">
+  <tr>
+    <td><code>function.apply(thisArg, argArray)</code></td>
+    <td>Invoke <code>function</code> with <code>thisArg</code> as the receiver</td>
+  </tr>
+  <tr>
+    <td><code>function.bind(thisArg, argArray)</code></td>
+    <td>Returns a function that has <code>thisArg</code> as the receiver.</td>
+  </tr>
+</table>
+
+Implementing Bind
+http://jsbin.com/vewapaci/3/edit
+
+
+
+
 <h1 class="page-header">{{ page.title }}</h1>
 <p class="lead">
   Prepare for your interview, or just brush up on your JavaScript basics.
@@ -109,287 +175,32 @@ bar();    // ReferenceError: bar is not defined
 </div>
 
 
-### Browser Object Model
-#### Window Object
-* Acts as `Global` object. Variables added to global scope via `var` have their `[[Configurable]]` attribute set to `false` and cannot be removed via `delete`.
-* If `foo` is not defined, trying to access `foo` will throw a `Reference Error: foo is not defined` while `window.foo` will return undefined (because it is a property lookup).
-* Each frame has its own `window` object. `top` ferences the outermost frame, `parent` points to the current frame's immediate parent frame.
-* `window.screenLeft`, `window.screenX`, `window.screenTop`, `window.screenY`
-* `window.innerWidth`, `window.innerHeight`, `window.outerWidth`, `window.outerHeight`
-  * `window.resizeTo()`, `window.resizeBy()`
-* `window.open()` can return null if pop-up blocker prevents it from happening. `window.close()` to close.
-* `setTimeout()` and `setInterval()` are window methods.
-  * Avoid intervals, better to recurseviely call `setTimeout()`
+### Bit Manipulation
 
-#### Location Object
-* `hash`, `hostname`, `href`, `pathname`, `search` (query string)
-* Set `window.location` to navigate
-* `replace()` to navigate to a URL but not update the history stack
-* `reload()` reloads current page
-
-#### Navigator Object
-_TODO_
-* Browser information
-
-
-### Document Object Model
-#### Node Type
-
-All node types inherit from <code>Node</code> in JavaScript. A node <code>n</code> shares the same basic properties:
+<table class="table">
+  <tr>
+    <td>x &gt;&gt; n</td>
+    <td>right shift (by n)</td>
+    <td>sign is copied; effectively divide by 2<sup>n</sup></td>
+  </tr>
+  <tr>
+    <td>x &gt;&gt;&gt; 0</td>
+    <td>right-shift (by 0) without sign extension</td>
+    <td>Cast to natural number</td>
+  </tr>
+  <tr>
+    <td>~~x</td>
+    <td>bit-wise not</td>
+    <td>Math.floor(x)</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
 
 
-<div class="row">
-  <div class="col-md-6">
-    <table class="table table-condensed js-api">
-      <tr>
-        <td>{% highlight javascript %}n.nodeType{% endhighlight %}</td>
-        <td>A number from 1 - 12</td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}n.nodeName{% endhighlight %}</td>
-        <td>For elements, the tag name</td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}n.nodeValue{% endhighlight %}</td>
-        <td>For elements, always <code>null</code></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}n.childNodes{% endhighlight %}</td>
-        <td>A <code>NodeList</code>, an array like object of child nodes.
-          <br />Can be accessed via bracket notation, <code>n.childNodes(0)</code>
-          <br />or the <code>item()</code> method, <code>n.childNodes.item(1)</code>
-          <br />Also contains a <code>length</code> property.
-        </td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}n.parentNode{% endhighlight %}</td>
-        <td>Parent in the document tree</td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}n.previousSibling{% endhighlight %}</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}n.nextSibling{% endhighlight %}</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}n.firstChild{% endhighlight %}</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}n.lastChild{% endhighlight %}</td>
-        <td></td>
-      </tr>
-    </table>
-  </div>
-  <div class="col-md-6">
-    <table class="table table-condensed js-api">
-      <tr>
-        <td>{% highlight javascript %}n.hasChildNodes(){% endhighlight %}</td>
-        <td>More efficient than <code>n.childNodes.length</code></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}n.ownerDocument(){% endhighlight %}</td>
-        <td>Quick way to access <code>Document</code> node rather than traversing up the node hierarchy</td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}n.appendChild(){% endhighlight %}</td>
-        <td>Add node to the end of <code>childNodes</code>.
-        <br />If passing in a <code>node</code>, remove it from previous location.</td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}n.insertBefore(){% endhighlight %}</td>
-        <td>Accepts two arguments: node to insert and reference node.
-        <br /><code>null</code> reference node? Act as <code>.appendChild()</code></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}n.replaceChild(){% endhighlight %}</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}n.removeChild(){% endhighlight %}</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}n.cloneNode(){% endhighlight %}</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}n.normalize(){% endhighlight %}</td>
-        <td>Remove empty text nodes and join text nodes that are immediate siblings.</td>
-      </tr>
-    </table>
-  </div>
-</div>
-
-
-
-#### Document Type
-<div class="row">
-  <div class="col-md-12">
-    <h5>Properties</h5>
-    <table class="table table-condensed js-api">
-      <tr>
-        <td>{% highlight javascript %}document.anchors{% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}document.applets{% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}document.forms{% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}document.images{% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}document.links{% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}document.readyState == 'loading'{% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}document.readyState == 'interactive'{% endhighlight %}</td>
-        <td>DOMContentLoaded</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}document.readyState == 'complete'{% endhighlight %}</td>
-        <td>sub-resources loaded</td>
-        <td></td>
-      </tr>
-    </table>
-  
-    <h5>Methods</h5>
-    <table class="table table-condensed js-api">
-      <tr>
-        <td>{% highlight javascript %}document.getElementById(){% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}document.getElementsByTagName(){% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}document.getElementsByClassName(){% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}document.querySelector('.some.selector'){% endhighlight %}</td>
-        <td>{% highlight javascript %}$('.some.selector')[0];{% endhighlight %}</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}document.querySelectorAll('.some.selector'){% endhighlight %}</td>
-        <td>Returns array of 0 or more matched elements</td>
-        <td>{% highlight javascript %}$('.some.selector');{% endhighlight %}</td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}document.createElement(){% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}document.createDocumentFragment(){% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-  </div>
-</div>
-
-#### Element Type
-<div class="row">
-  <div class="col-md-12">
-    <h5>Properties</h5>
-    <table class="table table-condensed js-api">
-      <tr>
-        <td>{% highlight javascript %}element.childElementCount{% endhighlight %}</td>
-        <td>Number of children</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}element.firstElementChild{% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}element.lastElementChild{% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}element.previousElementSibling{% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}element.nextElementSibling{% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}element.className{% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}element.classList{% endhighlight %}</td>
-        <td>
-        {% highlight javascript %}add(){% endhighlight %},
-        {% highlight javascript %}remove(){% endhighlight %},
-        {% highlight javascript %}contains(){% endhighlight %},
-        {% highlight javascript %}toggle(){% endhighlight %}
-        </td>
-        <td></td>
-      </tr>
-    </table>
-
-    <h5>Methods</h5>
-    <table class="table table-condensed js-api">
-      <tr>
-        <td>{% highlight javascript %}element.getElementById(){% endhighlight %}</td>
-        <td>$('#...')</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}element.getElementByTagName(){% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}element.querySelector(){% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}element.createElement(){% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>{% highlight javascript %}element.createDocumentFragment(){% endhighlight %}</td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-  </div>
-</div>
 
 ### AJAX
 <div class="row">
@@ -644,5 +455,115 @@ var foobar = require("./foobar.js").foobar,
 </ul>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 class="page-header">Object Patterns</h1>
+
+## Factory
+
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}
+function createPerson(name, age) {
+  var o = new Object();
+  o.name = name;
+  o.age = age;
+  return o;
+}{% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    Call a method that creates an object then returns it.
+  </div>
+</div>
+
+## Constructor Pattern
+
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}{% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    <ul>
+      <li>Methods are created for each instance.</li>
+      <li>Get around this by pointing method to externally defined function, or attaching to prototype.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}new Person('Tuan', 32);{% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    Use a function as a constructor with the <code>new</code> operator.
+    <ul>
+      <li><code>prototype</code> property gets added.</li>
+      <li>Each instance gets a <code>[[Prototype]]</code> property, <code>__proto__</code>.</li>
+    </ul>
+  </div>
+</div>
+
+## Prototypical Inheritance
+
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}Person.prototype.sayName = function() {
+  console.log(this.name);
+}{% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    <ul>
+      <li>Methods can be attached to prototype as properties.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}Person.prototype = {
+  sayName: function(){},
+  constuctor: Person
+}
+
+person.constructor === Person; // true{% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    <ul>
+      <li>Can also be defined via object literal notation</li>
+      <li>Be sure to specify <strong>constructor</strong> property!!</li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+
 
 

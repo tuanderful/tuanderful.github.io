@@ -106,6 +106,32 @@ http://jsbin.com/vewapaci/3/edit
   </tr>
 </table>
 
+#### Inherited from Object.prototype
+<table class="table table-condensed">
+  <tr>
+    <td><code>hasOwnProperty('propName')</code></td>
+    <td><code>true</code> if propName is a property</td>
+  </tr>
+  <tr>
+    <td><code>propertyIsEnumerable('propName')</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>isPrototypeOf()</code></td>
+    <td>var person = {...}
+    <br />var dev = Object.create(person, { propertyDescriptor });
+    <br />person.isPrototypeOf(person) // true</td>
+  </tr>
+  <tr>
+    <td><code>valueOf()</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>toString()</code></td>
+    <td>Used as a fallback when <code>valueOf()</code> returns a reference value</td>
+  </tr>
+</table>
+
 
 
 <h1 class="page-header">{{ page.title }}</h1>
@@ -574,7 +600,7 @@ person.constructor === Person; // true{% endhighlight %}
 
 <div class="row">
   <div class="col-md-6">
-    <h5>AMD</h5>
+    <h4>AMD</h4>
 {% highlight javascript %}
 define(function(require){
   var lib = require( "package/lib" );
@@ -603,7 +629,7 @@ require(["foobar", "baz"], function ( foobar, baz ) {
 </ul>
   </div>
   <div class="col-md-6">
-    <h5>CommonJS: require() and exports</h5>
+    <h4>CommonJS: require() and exports</h4>
 {% highlight javascript %}
 // -- foobar.js ------------------
 var lib = require( "package/lib" );

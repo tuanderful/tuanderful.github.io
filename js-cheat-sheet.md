@@ -81,11 +81,34 @@ http://jsbin.com/vewapaci/3/edit
 
 
 
+### Object
+
+<table class="table table-condensed">
+  <tr>
+    <td><code>Object.create(proto, propertiesObj)</code></td>
+    <td>TODO!</td>
+  </tr>
+  <tr>
+    <td><code>Object.defineProperty(obj, prop, descriptor)</code></td>
+    <td>Attaches <code>prop</code> to <code>obj</code> given the property descriptor object</td>
+  </tr>
+  <tr>
+    <td><code>Object.getOwnPropertyDescriptor(obj, name)</code></td>
+    <td><code>name</code> is a string</td>
+  </tr>
+  <tr>
+    <td><code>Object.getOwnPropertyNames(obj)</code></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><code>Object.keys()</code></td>
+    <td></td>
+  </tr>
+</table>
+
+
 
 <h1 class="page-header">{{ page.title }}</h1>
-<p class="lead">
-  Prepare for your interview, or just brush up on your JavaScript basics.
-</p>
 
 ### Arrays
 
@@ -122,7 +145,7 @@ basket = fruits.splice(2, 3);
   </div>
   <div class="col-md-4">
     <ul>
-      <li><code>(start, count)</code>
+      <li><code>(start, count)</code></li>
       <li>Removes <code>count</code> number of elements from the array</li>
       <li>Inserts new elements into the original array</li>
       <li>Returns an array of the removed elements (possibly empty)</li>
@@ -186,64 +209,101 @@ bar();    // ReferenceError: bar is not defined
   <tr>
     <td>x &gt;&gt;&gt; 0</td>
     <td>right-shift (by 0) without sign extension</td>
-    <td>Cast to natural number</td>
+    <td>  </td>
   </tr>
   <tr>
     <td>~~x</td>
-    <td>bit-wise not</td>
-    <td>Math.floor(x)</td>
+    <td>double bit-wise not</td>
+    <td>parseInt(x, 10), or Math.floor(x)</td>
   </tr>
   <tr>
+    <td><code>!!~array.indexOf(...)</code></td>
     <td></td>
-    <td></td>
-    <td></td>
+    <td>Fancy way of:<br />
+    if (array.indexOf(...) >= 0)
+    </td>
   </tr>
 </table>
 
 
 
-### AJAX
+
+
+
+
+
+
+
+
+<h1 class="page-header">Checks</h1>
+
 <div class="row">
   <div class="col-md-6">
-    <h5>jQuery</h5>
-{% highlight javascript %}
-$.ajax({
-  type: 'GET',
-  url: '/my/url',
-  success: function(resp) {
-
-  },
-  error: function() {
-
-  }
-});
-{% endhighlight %}
+  {% highlight javascript %}
+typeof 1                // "number"
+typeof '1'              // "string"
+typeof true             // "boolean"
+typeof undefined        // "undefined"
+typeof null             // "object"
+typeof {}               // "object"
+typeof function(){}     // "function"
+  {% endhighlight %}
   </div>
   <div class="col-md-6">
-    <h5>IE9+</h5>
-{% highlight javascript %}
-request = new XMLHttpRequest();
-request.open('get', '/my/url', true);
-
-request.onload = function() {
-  if (request.status >= 200 && request.status < 400) {
-    resp = request.responseText;
-  } else {
-    // target server reached, error returned
-  }
-}
-
-request.error = function() {
-  // connection error
-}
-
-request.send();
-{% endhighlight %}
+    Checks for:
+    <ul>
+      <li>Number</li>
+      <li>String</li>
+      <li>Boolean</li>
+      <li>Object</li>
+      <li>Function</li>
+    </ul>
+    Returns <code>function</code> if an object has a <code>[[Call]]</code> internal property.
   </div>
 </div>
 
 
-### Object Internals
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}someArray = [...];
+
+// ES5
+Array.isArray(someArray);
+
+// Polyfill
+if(!Array.isArray) {
+  Array.isArray = function(arg) {
+    return Object.prototype.toString.call(arg) === '[object Array]';
+  };
+}
+  {% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    When you call <code>toString</code> on an object, you get <code>[object Cnstrctr]</code>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}obj.prop !== undefined
+obj.hasOwnProperty('prop')
+'prop' in obj
+  {% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    Checking for properties
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<h1 class="page-header">Object Internals</h1>
 
 <div class="row">
   <div class="col-md-6">
@@ -389,97 +449,34 @@ var person1 = {
 
 
 
-### Patterns
-
-#### Modular Design Patterns
-
-
-
-<div class="row">
-  <div class="col-md-6">
-    <h5>AMD</h5>
-{% highlight javascript %}
-define(function(require){
-  var lib = require( "package/lib" );
-
-  // behaviour for our module
-  function foo(){
-    lib.log( "hello world!" );
-  }
-
-  // export (expose) foo for other modules
-  return {
-    foobar: foo
-  };
-});
-
-// -- Consuming the module
-require(["foobar", "baz"], function ( foobar, baz ) {
-  // rest of your code here
-  foobar.doSomething();
-});
-{% endhighlight %}
-<ul>
-  <li>Browser-first approach to development</li>
-  <li>Asychronous</li>
-  <li>Require.js</li>
-</ul>
-  </div>
-  <div class="col-md-6">
-    <h5>CommonJS: require() and exports</h5>
-{% highlight javascript %}
-// -- foobar.js ------------------
-var lib = require( "package/lib" );
- 
-// behaviour for our module
-function foo(){
-  lib.log( "hello world!" );
-}
-
-// export (expose) foo to other modules
-exports.foo = foo;
-
-
-
-
-// -- Consuming the module -------
-var foobar = require("./foobar.js").foobar,
-    test   = new foobar();
-
- 
-{% endhighlight %}
-<ul>
-  <li>Server-first approach to development</li>
-  <li>File I/O</li>
-  <li>CommonJS, Node</li>
-</ul>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <h1 class="page-header">Object Patterns</h1>
 
-## Factory
+<h3>Singleton</h3>
+
+{% highlight javascript %}var MySingleton = (function(){
+  // store reference to instance
+  var instance;
+  
+  function init(){
+    // private variables
+    return {
+
+    }
+  }
+
+  // Singleton Return Object: A single accessor getInstance()
+  return {
+    getInstance: function(){
+      if (!instance) {
+        instance = init();
+      }
+      return instance;
+    }
+  }
+})();{% endhighlight %}
+
+
+<h3>Factory</h3>
 
 <div class="row">
   <div class="col-md-6">
@@ -496,7 +493,7 @@ function createPerson(name, age) {
   </div>
 </div>
 
-## Constructor Pattern
+### Constructor Pattern
 
 <div class="row">
   <div class="col-md-6">
@@ -559,6 +556,82 @@ person.constructor === Person; // true{% endhighlight %}
   </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Modular Design Patterns
+
+<div class="row">
+  <div class="col-md-6">
+    <h5>AMD</h5>
+{% highlight javascript %}
+define(function(require){
+  var lib = require( "package/lib" );
+
+  // behaviour for our module
+  function foo(){
+    lib.log( "hello world!" );
+  }
+
+  // export (expose) foo for other modules
+  return {
+    foobar: foo
+  };
+});
+
+// -- Consuming the module
+require(["foobar", "baz"], function ( foobar, baz ) {
+  // rest of your code here
+  foobar.doSomething();
+});
+{% endhighlight %}
+<ul>
+  <li>Browser-first approach to development</li>
+  <li>Asychronous</li>
+  <li>Require.js</li>
+</ul>
+  </div>
+  <div class="col-md-6">
+    <h5>CommonJS: require() and exports</h5>
+{% highlight javascript %}
+// -- foobar.js ------------------
+var lib = require( "package/lib" );
+ 
+// behaviour for our module
+function foo(){
+  lib.log( "hello world!" );
+}
+
+// export (expose) foo to other modules
+exports.foo = foo;
+
+
+
+
+// -- Consuming the module -------
+var foobar = require("./foobar.js").foobar,
+    test   = new foobar();
+
+ 
+{% endhighlight %}
+<ul>
+  <li>Server-first approach to development</li>
+  <li>File I/O</li>
+  <li>CommonJS, Node</li>
+</ul>
+  </div>
+</div>
 
 
 

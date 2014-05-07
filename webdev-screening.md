@@ -42,32 +42,4 @@ permalink: webdev-screening/
 
 `Object.getOwnPropertyDescriptor`
 
-# Patterns
-
-### Singleton
-
-    var MySingleton = (function(){
-      // store reference to instance
-      var instance;
-      
-      function init(){
-        // private variables
-        return {
-
-        }
-      }
-
-      // Singleton Return Object: A single accessor getInstance()
-      return {
-        getInstance: function(){
-          if (!instance) {
-            instance = init();
-          }
-          return instance;
-        }
-      }
-    })();
-
-
-
 

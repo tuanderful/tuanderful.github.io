@@ -28,6 +28,23 @@ request.error = function() {
 
 request.send();{% endhighlight %}
 
+### Event Listeners
+{% highlight javascript %}
+// addHandler(node, 'click', cb);
+function addHandler(e, type, handler) {
+  if (e.addEventListener) {
+    // DOM 2
+    e.addEventListener(type, handler, false);
+  } else if (e.attachEvent) {
+    // IE 8
+    e.attachEvent('on'+type, handler);
+  } else {
+    element['on'+type] = handler;       // detach? null
+  }
+}
+{% endhighlight %}
+
+
 
 <h1 class="page-header">ES5</h1>
 
@@ -40,7 +57,11 @@ request.send();{% endhighlight %}
            // concat args (from partial application) with current arguments
     return that.apply(null, args.concat(Array.prototype.slice.apply(arguments)));
   }
-}{% endhighlight %}
+}
+
+function add(a, b){ return a + b }
+
+var add1 = add.curry(1);{% endhighlight %}
 
 
 ### Bind
@@ -71,6 +92,59 @@ if (!Function.prototype.bind) {
   };
 }
 {% endhighlight %}
+
+
+
+# Underscore
+
+### forEach
+
+
+** ES5 Usage: ** <code>obj.forEach(iterator, context);</code>
+
+** Iterator: ** <code>callback(element, index, array)</code>
+
+{% highlight javascript %}
+var each = _.each = _.forEach = function(obj, iterator, context) {
+  if (obj == null) return obj;
+  if (nativeForEach && obj.forEach === nativeForEach) {
+    obj.forEach(iterator, context);
+  } else if (obj.length === +obj.length) {
+    for (var i = 0, length = obj.length; i < length; i++) {
+      if (iterator.call(context, obj[i], i, obj) === breaker) return;
+    }
+  } else {
+    var keys = _.keys(obj);
+    for (var i = 0, length = keys.length; i < length; i++) {
+      if (iterator.call(context, obj[keys[i]], keys[i], obj) === breaker) return;
+    }
+  }
+  return obj;
+};{% endhighlight %}
+
+
+### Extend
+
+{% highlight javascript %}
+_.extend = function(obj) {
+  each(slice.call(arguments, 1), function(source) {
+    if (source) {
+      for (var prop in source) {
+        obj[prop] = source[prop];
+      }
+    }
+  });
+  return obj;
+};{% endhighlight %}
+
+### Clone
+
+{% highlight javascript %}
+_.clone = function(obj) {
+  if (!_.isObject(obj)) return obj;
+  return _.isArray(obj) ? obj.slice() : _.extend({}, obj);
+};{% endhighlight %}
+
 
 
 

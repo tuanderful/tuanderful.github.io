@@ -30,11 +30,11 @@ table.js-api .highlight {
   </tr>
   <tr>
     <td><code>array.pop()</code></td>
-    <td></td>
+    <td>Remove (and return) last element</td>
   </tr>
   <tr>
     <td><code>array.push()</code></td>
-    <td></td>
+    <td>Add elements to end, returns <strong>length</strong></td>
   </tr>
   <tr>
     <td><code>array.reverse()</code></td>
@@ -42,11 +42,11 @@ table.js-api .highlight {
   </tr>
   <tr>
     <td><code>array.shift()</code></td>
-    <td></td>
+    <td>Remove (and return) first element</td>
   </tr>
   <tr>
     <td><code>array.unshift(item)</code></td>
-    <td></td>
+    <td>Add elements to beginning, returns <strong>length</strong></td>
   </tr>
   <tr>
     <td><code>array.slice(start, end)</code></td>
@@ -54,7 +54,7 @@ table.js-api .highlight {
   </tr>
   <tr>
     <td><code>array.splice()</code></td>
-    <td></td>
+    <td>Modifies original element, returns array of removed elements</td>
   </tr>
   <tr>
     <td><code>array.sort(comparator)</code></td>
@@ -102,7 +102,7 @@ http://jsbin.com/vewapaci/3/edit
   </tr>
   <tr>
     <td><code>Object.keys()</code></td>
-    <td></td>
+    <td>Returns an object's <em>own</em> properties</td>
   </tr>
 </table>
 
@@ -124,7 +124,7 @@ http://jsbin.com/vewapaci/3/edit
   </tr>
   <tr>
     <td><code>valueOf()</code></td>
-    <td></td>
+    <td>Called when an operator is used.</td>
   </tr>
   <tr>
     <td><code>toString()</code></td>
@@ -235,7 +235,7 @@ bar();    // ReferenceError: bar is not defined
   <tr>
     <td>x &gt;&gt;&gt; 0</td>
     <td>right-shift (by 0) without sign extension</td>
-    <td>  </td>
+    <td>Cast native JS double to int</td>
   </tr>
   <tr>
     <td>~~x</td>
@@ -301,8 +301,7 @@ if(!Array.isArray) {
   Array.isArray = function(arg) {
     return Object.prototype.toString.call(arg) === '[object Array]';
   };
-}
-  {% endhighlight %}
+}{% endhighlight %}
   </div>
   <div class="col-md-6">
     When you call <code>toString</code> on an object, you get <code>[object Cnstrctr]</code>
@@ -311,15 +310,72 @@ if(!Array.isArray) {
 
 <div class="row">
   <div class="col-md-6">
-  {% highlight javascript %}obj.prop !== undefined
-obj.hasOwnProperty('prop')
-'prop' in obj
-  {% endhighlight %}
+  {% highlight javascript %}isObject(obj {
+  obj = Object(obj);
+}{% endhighlight %}
   </div>
   <div class="col-md-6">
     Checking for properties
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}obj.prop !== undefined
+obj.hasOwnProperty('prop')
+'prop' in obj{% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    Checking for properties
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 class="page-header">Casts</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <code>+x</code>
+  </div>
+  <div class="col-md-6">
+    Cast to number
+  </div>
+  <div class="col-md-6">
+    <code>x + ""</code>
+  </div>
+  <div class="col-md-6">
+    Cast to string
+  </div>
+  <div class="col-md-6">
+    <code>!!x</code>
+  </div>
+  <div class="col-md-6">
+    Cast to boolean
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <code>config = typeof config !== 'undefined' ? config : 42;</code>
+  </div>
+  <div class="col-md-6">
+    Default values.
+  </div>
+</div>
+
+
+
+
 
 
 
@@ -479,7 +535,9 @@ var person1 = {
 
 <h3>Singleton</h3>
 
-{% highlight javascript %}var MySingleton = (function(){
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}var MySingleton = (function(){
   // store reference to instance
   var instance;
   
@@ -500,6 +558,34 @@ var person1 = {
     }
   }
 })();{% endhighlight %}
+  </div>
+  <div class="col-md-6">
+{% highlight javascript %}function Universe() {
+  // cache the instance
+  var instance = this;
+
+  // declare variables, init
+
+  // redefine constructor
+  Universe = function() {
+    return instance;
+  }
+
+  /* May need to preserve prototype....
+  Universe.prototype = this;
+  instance = new Universe();
+  instance.constructor = Universe;
+  */
+}
+{% endhighlight %}
+  </div>
+</div>
+
+
+
+
+
+
 
 
 <h3>Factory</h3>
@@ -550,13 +636,145 @@ function Person(name, age) {
   </div>
 </div>
 
-## Prototypical Inheritance
+
+
+<h3>new-Agnostic Constructors</h3>
 
 <div class="row">
   <div class="col-md-6">
-  {% highlight javascript %}Person.prototype.sayName = function() {
-  console.log(this.name);
+  {% highlight javascript %}
+function User(name){
+  if (!(this instanceof User)) {
+    return new User(name);
+  }
+  this.name = name;
 }{% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    Requires extra function call :(
+  </div>
+  <div class="col-md-6">
+  {% highlight javascript %}
+function User(name){
+  var self = this instanceof User
+           ? this
+           : Object.create(User.prototype);
+  self.name = name;
+  return self;
+}{% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    Requires extra function call :(
+  </div>
+</div>
+
+
+
+# Inheritance
+
+Suppose we have the following:
+
+{% highlight javascript %}function Parent(){
+  this.name = name || 'Adam';
+}{% endhighlight %}
+
+
+
+<h4>Classical #1 - Set Prototype</h4>
+
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}function Parent(){
+  this.name = name || 'Adam';
+}
+
+function Child(){}
+
+Child.prototype = new Parent();{% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    <ul>
+      <li>Inherit properties added to parent as well as child.</li>
+      <li>Cannot define arguments when calling child constructor</li>
+    </ul>
+  </div>
+</div>
+
+#### Classical #2: Borrow Constructor
+
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}function Child(a, b, c, d){
+  Parent.apply(this, arguments);
+}{% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    <ul>
+      <li>The child's constructor simply executes the parent constructor</li>
+      <li>Nothing from parent's prototype is inherited</li>
+    </ul>
+  </div>
+</div>
+
+#### Classical #3: Borrow Constructor, Set Prototype
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}function Child(){
+  Parent.apply(this, arguments);
+}
+
+Child.prototype = new Parent();{% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    <ul>
+      <li>The child's constructor simply executes the parent constructor</li>
+      <li>Nothing from parent's prototype is inherited</li>
+    </ul>
+  </div>
+</div>
+
+#### Classical #4: Shared Prototype
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}Child.prototype = Parent.prototype{% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    <ul>
+      <li>Remember! The prototype contains the constructor property</li>
+      <li>Moddifications to prototype affect all on the chain</li>
+    </ul>
+  </div>
+</div>
+
+#### Classical #4: Temporary Constructor
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}var F = function(){};
+  F.prototype = Parent.prototype;
+  Child.prototype = new F();{% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    <ul>
+      <li>Create a proxy</li>
+      <li>no refernce to the original parent...</li>
+    </ul>
+  </div>
+</div>
+
+### Prototypical Inheritance
+
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}function Parent(){
+  //....
+}
+var parent = new Parent();
+
+// Inheritance here:
+function F(){} // empty function
+F.prototype = parent;
+
+var child = new F();{% endhighlight %}
   </div>
   <div class="col-md-6">
     <ul>
@@ -567,17 +785,11 @@ function Person(name, age) {
 
 <div class="row">
   <div class="col-md-6">
-  {% highlight javascript %}Person.prototype = {
-  sayName: function(){},
-  constuctor: Person
-}
-
-person.constructor === Person; // true{% endhighlight %}
+  {% highlight javascript %}var child = Object.create(parent){% endhighlight %}
   </div>
   <div class="col-md-6">
     <ul>
-      <li>Can also be defined via object literal notation</li>
-      <li>Be sure to specify <strong>constructor</strong> property!!</li>
+      <li>ES5</li>
     </ul>
   </div>
 </div>
@@ -666,3 +878,8 @@ var foobar = require("./foobar.js").foobar,
 
 
 
+# Events
+
+* on(name, callback, context)
+* off(name, callback, context)
+* trigger(name)

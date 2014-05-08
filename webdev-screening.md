@@ -33,9 +33,14 @@ permalink: webdev-screening/
 * RHS is just a variable lookup. Will throw `ReferenceError` if variable doesn't exist.
 
 ### Prototype
-* `C.prototype`
-* `Object.getPrototypeOf(someObj)`
-* `someObj.__prototype__`
+* `C.prototype` - read-only; the prototype of objects created by `C()`
+* `Object.getPrototypeOf(someObj)` - retrieve prototype of someObj
+* `someObj.__prototype__` - non-standard mechanism for retrieving the prototype
+
+### Event Bubbling vs Event Capturing
+* Determines order events fire.
+  * Bubbling: Event on deepest child fires first, then bubbles upwards
+  * Capturing: Event fires on highest level element (document), then goes downward.
 
 # Objects
 `Object.create`

@@ -16,9 +16,15 @@ table.js-api .highlight {
 }
 </style>
 
+
+### Browser Events
+
+![](https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/NavigationTiming/timing-overview.png)
+
 ### Browser Object Model
 #### Window Object
-* Acts as `Global` object. Variables added to global scope via `var` have their `[[Configurable]]` attribute set to `false` and cannot be removed via `delete`.
+* Acts as `Global` object.
+* Variables added to global scope via `var` have their `[[Configurable]]` attribute set to `false` and cannot be removed via `delete`.
 * If `foo` is not defined, trying to access `foo` will throw a `Reference Error: foo is not defined` while `window.foo` will return undefined (because it is a property lookup).
 * Each frame has its own `window` object. `top` ferences the outermost frame, `parent` points to the current frame's immediate parent frame.
 * `window.screenLeft`, `window.screenX`, `window.screenTop`, `window.screenY`

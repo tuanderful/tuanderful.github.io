@@ -197,35 +197,13 @@ In all implementations, consider the case if the iterator (or head) points to nu
   * In-Order - perform work on left child, current node, then right child
   * Post-Order - perform work on children before current node
 
+
 ### Simple Implementation
 
 * Keep references to `firstChild` and `nextSibling`
 
-### Binary Search Tree
 
-<table class="table table-condensed">
-  <tr>
-    <td></td>
-    <td>Indexing</td>
-    <td>Search</td>
-    <td>Insertion</td>
-    <td>Deletion</td>
-  </tr>
-  <tr>
-    <td>Average</td>
-    <td><span class="btn btn-warning btn-xs">O(log n)</span></td>
-    <td><span class="btn btn-success btn-xs">O(log n)</span></td>
-    <td><span class="btn btn-success btn-xs">O(log n)</span></td>
-    <td><span class="btn btn-success btn-xs">O(log n)</span></td>
-  </tr>
-  <tr>
-    <td>Worst</td>
-    <td><span class="btn btn-danger btn-xs">O(n)</span></td>
-    <td><span class="btn btn-danger btn-xs">O(n)</span></td>
-    <td><span class="btn btn-danger btn-xs">O(n)</span></td>
-    <td><span class="btn btn-danger btn-xs">O(n)</span></td>
-  </tr>
-</table>
+### Binary Search Tree
 
 * For any node n, value of nodes on left subtree are smaller than n.value (similarly, right subtree nodes are greater)
 * Average depth of BST is O(log n)
@@ -250,30 +228,6 @@ In all implementations, consider the case if the iterator (or head) points to nu
 * Insertion
   * Outside: Single rotation
   * Inside: Double rotation
-
-<table class="table table-condensed">
-  <tr>
-    <td></td>
-    <td>Indexing</td>
-    <td>Search</td>
-    <td>Insertion</td>
-    <td>Deletion</td>
-  </tr>
-  <tr>
-    <td>Average</td>
-    <td><span class="btn btn-warning btn-xs">O(log n)</span></td>
-    <td><span class="btn btn-success btn-xs">O(log n)</span></td>
-    <td><span class="btn btn-success btn-xs">O(log n)</span></td>
-    <td><span class="btn btn-success btn-xs">O(log n)</span></td>
-  </tr>
-  <tr>
-    <td>Worst</td>
-    <td><span class="btn btn-warning btn-xs">O(log n)</span></td>
-    <td><span class="btn btn-success btn-xs">O(log n)</span></td>
-    <td><span class="btn btn-success btn-xs">O(log n)</span></td>
-    <td><span class="btn btn-success btn-xs">O(log n)</span></td>
-  </tr>
-</table>
 
 
 
@@ -453,14 +407,14 @@ Follow a path from beginning to end before backtracking to the first level.
     <td><span class="btn btn-success btn-xs">n</span></td>
     <td><span class="btn btn-success btn-xs">n</span></td>
     <td><span class="btn btn-danger btn-xs">n<sup>2</sup></span></td>
-    <td>Dense universe of items.</td>
+    <td>Uniformly partitioned with a fast hash f()</td>
   </tr>
   <tr>
     <td>Count Sort</td>
     <td><span class="btn btn-success btn-xs">n<sup></sup></span></td>
     <td></td>
     <td></td>
-    <td>Uniformly partitioned with a fast hash f()</td>
+    <td>Finite set of items.</td>
   </tr>
 </table>
 
@@ -542,10 +496,31 @@ Reduces processing costs at the expense of extra space. Only valid if:
   </tr>
   <tr>
     <td>Sequential</td>
+    <td>1</td>
+    <td><span class="btn btn-danger btn-xs">n</span></td>
+    <td><span class="btn btn-danger btn-xs">n</span></td>
+    <td>Small list, or not too many searches</td>
+  </tr>
+  <tr>
+    <td>Binary</td>
+    <td>1</td>
+    <td><span class="btn btn-warning btn-xs">log n</span></td>
+    <td><span class="btn btn-warning btn-xs">log n</span></td>
+    <td>Static Data (sorted)</td>
+  </tr>
+  <tr>
+    <td>Hash-Based</td>
+    <td>1</td>
     <td><span class="btn btn-success btn-xs">1</span></td>
     <td><span class="btn btn-danger btn-xs">n</span></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Binary Tree</td>
+    <td>1</td>
+    <td><span class="btn btn-warning btn-xs">log n</span></td>
     <td><span class="btn btn-danger btn-xs">n</span></td>
-    <td>Small list, or mostly sorted</td>
+    <td>Dynamic Data (Sorted)</td>
   </tr>
 </table>
 
@@ -557,6 +532,15 @@ Reduces processing costs at the expense of extra space. Only valid if:
   * Move to back on success - *if unlikely to be queried again*
 
 
+### Binary Search
+
+Array, Divide and Conquer - Not suitable for **dynamic search set**
+
+
+### Hash-Based Search
+
+
+### Binary Tree Search
 
 
 

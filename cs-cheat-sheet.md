@@ -51,6 +51,67 @@ permalink: cs-cheat-sheet/
 
 <hr />
 
+# Data Structures
+
+<table class="table table-condensed">
+  <tr>
+    <td></td>
+    <td>Indexing</td>
+    <td>Search</td>
+    <td>Insertion</td>
+    <td>Deletion</td>
+  </tr>
+  <tr>
+    <td>Array</td>
+    <td><span class="btn btn-success btn-xs">1</span></td>
+    <td><span class="btn btn-danger btn-xs">n</span></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Linked List</td>
+    <td><span class="btn btn-danger btn-xs">n</span></td>
+    <td><span class="btn btn-danger btn-xs">n</span></td>
+    <td><span class="btn btn-success btn-xs">1</span></td>
+    <td><span class="btn btn-success btn-xs">1</span></td>
+  </tr>
+  <tr>
+    <td>Binary Search Tree</td>
+    <td><span class="btn btn-warning btn-xs">log n</span></td>
+    <td><span class="btn btn-warning btn-xs">log n</span> / <span class="btn btn-danger btn-xs">n</span></td>
+    <td><span class="btn btn-warning btn-xs">log n</span> / <span class="btn btn-danger btn-xs">n</span></td>
+    <td><span class="btn btn-warning btn-xs">log n</span> / <span class="btn btn-danger btn-xs">n</span></td>
+  </tr>
+  <tr>
+    <td>Hash Table</td>
+    <td></td>
+    <td><span class="btn btn-success btn-xs">1</span> / <span class="btn btn-danger btn-xs">n</span></td>
+    <td><span class="btn btn-success btn-xs">1</span> / <span class="btn btn-danger btn-xs">n</span></td>
+    <td><span class="btn btn-success btn-xs">1</span> / <span class="btn btn-danger btn-xs">n</span></td>
+  </tr>
+  <tr>
+    <td>Heap</td>
+    <td></td>
+    <td></td>
+    <td><span class="btn btn-warning btn-xs">log n</span></td>
+    <td><span class="btn btn-warning btn-xs">log n</span></td>
+  </tr>
+  <tr>
+    <td>AVL</td>
+    <td><span class="btn btn-warning btn-xs">log n</span></td>
+    <td><span class="btn btn-warning btn-xs">log n</span></td>
+    <td><span class="btn btn-warning btn-xs">log n</span></td>
+    <td><span class="btn btn-warning btn-xs">log n</span></td>
+  </tr>
+</table>
+
+
+
+
+
+<hr />
+
+
 # Arrays
 
 ### Rotated Array

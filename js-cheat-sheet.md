@@ -355,9 +355,9 @@ if(!Array.isArray) {
 
 <div class="row">
   <div class="col-md-6">
-  {% highlight javascript %}isObject(obj {
-  obj = Object(obj);
-}{% endhighlight %}
+  {% highlight javascript %} _.isObject = function(obj) {
+  return obj === Object(obj);
+};{% endhighlight %}
   </div>
   <div class="col-md-6">
     Checking for properties

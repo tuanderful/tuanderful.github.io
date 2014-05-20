@@ -104,6 +104,10 @@ http://jsbin.com/vewapaci/3/edit
     <td><code>Object.keys()</code></td>
     <td>Returns an object's <em>own</em> properties</td>
   </tr>
+  <tr>
+    <td><code>Object.getPrototypeOf()</code></td>
+    <td>Return's the argument's prototype.</td>
+  </tr>
 </table>
 
 #### Inherited from Object.prototype
@@ -137,6 +141,9 @@ http://jsbin.com/vewapaci/3/edit
 <h1 class="page-header">{{ page.title }}</h1>
 
 ### Arrays
+
+* Arrays are sparse. Specialized objects with a `length` property
+* Limited to <code>2<sup>32</sup> - 1</code> elements
 
 #### Slice
 
@@ -179,11 +186,49 @@ basket = fruits.splice(2, 3);
   </div>
 </div>
 
+#### forEach
+<div class="row">
+  <div class="col-md-8">
+  {% highlight javascript %}someArray.forEach(function(element, index, array) {
+ //
+});{% endhighlight %}
+  </div>
+  <div class="col-md-4">
+    <ul>
+      <li><code>element</code></li>
+      <li><code>index</code></li>
+      <li><code>array</code> - the original array</li>
+    </ul>
+  </div>
+</div>
+
+
+### String
+
 
 #### substr
 
+<div class="row">
+  <div class="col-md-8">
+  {% highlight javascript %}str.substr(start[, length]){% endhighlight %}
+  </div>
+  <div class="col-md-4">
+    Returns <code>length</code> characters from start position.
+    <br />If <code>start</code> is negative, it counts from the right.
+    <br />If length is negative or start > length, then empty string is returned.
+  </div>
+</div>
 
 #### substring
+
+<div class="row">
+  <div class="col-md-8">
+  {% highlight javascript %}str.substring(indexA[, indexB]){% endhighlight %}
+  </div>
+  <div class="col-md-4">
+    If an argument is less than 0, or NaN, it is treated as 0.
+  </div>
+</div>
 
 
 
@@ -653,6 +698,9 @@ function User(name){
   <div class="col-md-6">
     Requires extra function call :(
   </div>
+</div>
+
+<div class="row">
   <div class="col-md-6">
   {% highlight javascript %}
 function User(name){
@@ -664,19 +712,21 @@ function User(name){
 }{% endhighlight %}
   </div>
   <div class="col-md-6">
-    Requires extra function call :(
+    
   </div>
 </div>
 
 
 
-# Inheritance
+<h1 class="page-header">Inheritance</h1>
 
 Suppose we have the following:
 
 {% highlight javascript %}function Parent(){
   this.name = name || 'Adam';
-}{% endhighlight %}
+}
+
+Parent.prototype.sayName = function(){}{% endhighlight %}
 
 
 
@@ -684,12 +734,7 @@ Suppose we have the following:
 
 <div class="row">
   <div class="col-md-6">
-  {% highlight javascript %}function Parent(){
-  this.name = name || 'Adam';
-}
-
-function Child(){}
-
+  {% highlight javascript %}function Child(){}
 Child.prototype = new Parent();{% endhighlight %}
   </div>
   <div class="col-md-6">
@@ -722,13 +767,11 @@ Child.prototype = new Parent();{% endhighlight %}
   {% highlight javascript %}function Child(){
   Parent.apply(this, arguments);
 }
-
 Child.prototype = new Parent();{% endhighlight %}
   </div>
   <div class="col-md-6">
     <ul>
-      <li>The child's constructor simply executes the parent constructor</li>
-      <li>Nothing from parent's prototype is inherited</li>
+      <li>Requires two calls to parent constructor</li>
     </ul>
   </div>
 </div>
@@ -740,26 +783,31 @@ Child.prototype = new Parent();{% endhighlight %}
   </div>
   <div class="col-md-6">
     <ul>
-      <li>Remember! The prototype contains the constructor property</li>
-      <li>Moddifications to prototype affect all on the chain</li>
+      <li>Modifying the child prototype will affect parents!</li>
     </ul>
   </div>
 </div>
 
-#### Classical #4: Temporary Constructor
+#### Classical #5: Temporary Constructor
 <div class="row">
   <div class="col-md-6">
   {% highlight javascript %}var F = function(){};
-  F.prototype = Parent.prototype;
-  Child.prototype = new F();{% endhighlight %}
+F.prototype = Parent.prototype;
+Child.prototype = new F();
+
+Child.uber = Parent.prototype;          // store the super class
+Child.prototype.constructor = Child;    // restore constructor
+{% endhighlight %}
   </div>
   <div class="col-md-6">
     <ul>
       <li>Create a proxy</li>
-      <li>no refernce to the original parent...</li>
+      <li>no reference to the original parent...</li>
     </ul>
   </div>
 </div>
+
+
 
 ### Prototypical Inheritance
 
@@ -789,7 +837,18 @@ var child = new F();{% endhighlight %}
   </div>
   <div class="col-md-6">
     <ul>
-      <li>ES5</li>
+      <li>Since <code>parent</code> is in instance, parent's own properties are now on child's instance</li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+  {% highlight javascript %}var child = Object.create(Parent.prototype){% endhighlight %}
+  </div>
+  <div class="col-md-6">
+    <ul>
+      <li>Only copies over the prototype properties.</li>
     </ul>
   </div>
 </div>
@@ -803,9 +862,33 @@ var child = new F();{% endhighlight %}
 
 
 
+<h1 class="page-header">Design Patterns</h1>
 
+## Publish/Subscribe
 
+{% highlight javascript %}
+var publisher = {
+  subscribers: {
+    any: []       // any is 'event'
+  },
+  subscribe: function(fn, type) {
+    type = type || 'any';
+    this.subscribers[type].push(fn);    // add callback to the event
+  },
+  unsubscribe: function(){},
+  publish: function(publication, type) {
+    this.visitSubscribers('publish', publication, type);
+  },
+  visitSubscribers: function(action, arg, type) {
+    // iterate thru the subscribers for a given 'type'
+    var subscribers = this.subscribers[type];
 
+    subscribers.forEach(function(element, index, array){
+      element(arg);
+    });
+  }
+}
+{% endhighlight %}
 
 
 ## Modular Design Patterns

@@ -6,6 +6,14 @@ markdown: redcarpet
 permalink: webdev-screening/
 ---
 
+# Basics
+
+### Get vs Post
+* Get for safe actions (data passed in URL), post for secure
+* GET for idempotent actions (often cached)
+* POST for long requests (GET limited to 2048 char in IE)
+* GET for AJAX (POST implemented as two-step process, sending headers first)
+
 # JS
 
 ### What is a Closure?

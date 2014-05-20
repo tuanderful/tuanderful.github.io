@@ -319,6 +319,20 @@ var f = function find(k, v){
 
 * Externally, we cannot reference the internal name
 
+* In some old ES3 engines, merely naming a function expression brings all properties of `Object.prototype` into scope.
+
+    var constructor = function() { return null; }
+    var f = function f() {
+      // Object.prototype.constructor is in scope
+      return constructor();       // new object is created
+    }
+
+* Avoid using variables with names of `Object.prototype` properties
+
+
+#### 15. Beware of Unportable Scoping of Block-Local Function Declarations
+
+* Don't put function declarations inside of local blocks (if statements)
 
 
 

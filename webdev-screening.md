@@ -1,7 +1,6 @@
 ---
 layout: default-narrow
 title: Web Dev Screening
-group: navigation
 markdown: redcarpet
 permalink: webdev-screening/
 ---

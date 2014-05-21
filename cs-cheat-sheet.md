@@ -1,7 +1,6 @@
 ---
 layout: default-narrow
 title: CS Cheat Sheet
-group: navigation
 markdown: redcarpet
 permalink: cs-cheat-sheet/
 ---

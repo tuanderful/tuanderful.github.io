@@ -100,9 +100,7 @@ if (!Function.prototype.bind) {
 ### forEach
 
 
-** ES5 Usage: ** <code>obj.forEach(iterator, context);</code>
-
-** Iterator: ** <code>callback(element, index, array)</code>
+<b>ES5 Usage:</b> <code>obj.forEach(iterator, context);</code>, where iterator is <code>function iterator(element, index, array)</code>.
 
 {% highlight javascript %}
 var each = _.each = _.forEach = function(obj, iterator, context) {
